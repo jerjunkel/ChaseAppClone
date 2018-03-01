@@ -24,6 +24,7 @@ class UserLoginViewController: UIViewController {
     
     private func addSubViews() {
         view.addSubview(backgroundImage)
+        view.addSubview(infoBoxView)
     }
     
     private func setContraints() {
@@ -31,6 +32,12 @@ class UserLoginViewController: UIViewController {
             backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backgroundImage.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor, multiplier: 0.7)
+            ].map{$0.isActive = true}
+        
+        _ = [infoBoxView.topAnchor.constraint(equalTo: backgroundImage.bottomAnchor),
+            infoBoxView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            infoBoxView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            infoBoxView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ].map{$0.isActive = true}
     }
     
@@ -41,4 +48,6 @@ class UserLoginViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+    
+    private var infoBoxView: BoxView = BoxView(with: true, borderStyle: .heavy)
 }
