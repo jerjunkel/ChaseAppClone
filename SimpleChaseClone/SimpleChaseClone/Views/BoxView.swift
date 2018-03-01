@@ -25,15 +25,35 @@ class BoxView: UIView {
         super.init(coder: aDecoder)
     }
     
-    convenience init (with corners: Bool, borderStyle: boxViewBorderStyle){
+    convenience init (hasCorners: Bool, borderStyle: boxViewBorderStyle){
         self.init()
         self.borderStyle = borderStyle
-        self.hasCorners = corners
+        self.hasCorners = hasCorners
         setUpView()
     }
     
+    //MARK:- Utilities
     private func setUpView() {
         self.backgroundColor = .white
         self.translatesAutoresizingMaskIntoConstraints = false
+        setBorderStyle()
+        addCorner()
+    }
+    
+    private func setBorderStyle() {
+        switch borderStyle {
+        case .heavy:
+            self.layer.borderWidth = 2
+        case .thin:
+            self.layer.borderWidth = 0.5
+        case .none:
+            break
+        }
+    }
+    
+    private func addCorner() {
+        if hasCorners {
+            self.layer.cornerRadius = 2.5
+        }
     }
 }

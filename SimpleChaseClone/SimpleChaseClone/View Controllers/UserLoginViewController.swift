@@ -31,10 +31,10 @@ class UserLoginViewController: UIViewController {
         _ = [backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundImage.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor, multiplier: 0.7)
+            backgroundImage.heightAnchor.constraint(equalTo: view.heightAnchor)
             ].map{$0.isActive = true}
         
-        _ = [infoBoxView.topAnchor.constraint(equalTo: backgroundImage.bottomAnchor),
+        _ = [infoBoxView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
             infoBoxView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             infoBoxView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             infoBoxView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -45,9 +45,11 @@ class UserLoginViewController: UIViewController {
     private var backgroundImage: UIImageView = {
         let imageView: UIImageView = UIImageView()
         imageView.backgroundColor = .yellow
+        imageView.image = UIImage(named: "background2")
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    private var infoBoxView: BoxView = BoxView(with: true, borderStyle: .heavy)
+    private var infoBoxView: BoxView = BoxView(hasCorners: false, borderStyle: .none)
 }
