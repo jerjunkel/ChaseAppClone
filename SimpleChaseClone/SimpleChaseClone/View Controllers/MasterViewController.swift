@@ -9,7 +9,7 @@
 import UIKit
 
 class MasterViewController: UIViewController {
-
+    private let loginVC = UserLoginViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViewController()
@@ -20,11 +20,11 @@ class MasterViewController: UIViewController {
         view.backgroundColor = Colors.blue.color
         addSubViews()
         setContraints()
+        addLoginViewController()
     }
     
     private func addSubViews() {
         view.addSubview(backgroundImage)
-       // view.addSubview(infoBoxView)
         view.addSubview(logoImageView)
     }
     
@@ -38,12 +38,12 @@ class MasterViewController: UIViewController {
         _ = [logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ].map{$0.isActive = true}
-        
-//        _ = [infoBoxView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
-//            infoBoxView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            infoBoxView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            infoBoxView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//            ].map{$0.isActive = true}
+    }
+    
+    private func addLoginViewController() {
+        addChildViewController(loginVC)
+        view.addSubview(loginVC.view)
+        loginVC.didMove(toParentViewController: self)
     }
     
     //MARK: Views
@@ -62,6 +62,4 @@ class MasterViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
-    //private var infoBoxView: BoxView = BoxView(hasCorners: false, borderStyle: .none)
 }
