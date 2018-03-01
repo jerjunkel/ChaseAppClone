@@ -25,6 +25,7 @@ class UserLoginViewController: UIViewController {
     private func addSubViews() {
         view.addSubview(backgroundImage)
         view.addSubview(infoBoxView)
+        view.addSubview(logoImageView)
     }
     
     private func setContraints() {
@@ -32,6 +33,10 @@ class UserLoginViewController: UIViewController {
             backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backgroundImage.heightAnchor.constraint(equalTo: view.heightAnchor)
+            ].map{$0.isActive = true}
+        
+        _ = [logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ].map{$0.isActive = true}
         
         _ = [infoBoxView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
@@ -47,6 +52,13 @@ class UserLoginViewController: UIViewController {
         imageView.backgroundColor = .yellow
         imageView.image = UIImage(named: "background2")
         imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private var logoImageView: UIImageView = {
+        let imageView: UIImageView = UIImageView()
+        imageView.image = UIImage(named: "chase-logo-white-small")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
