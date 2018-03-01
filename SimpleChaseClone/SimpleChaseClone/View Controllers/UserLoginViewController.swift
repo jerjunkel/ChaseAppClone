@@ -29,7 +29,7 @@ class UserLoginViewController: UIViewController {
     }
     
     private func setContraints() {
-        _ = [infoBoxView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
+        _ = [infoBoxView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25),
              infoBoxView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
              infoBoxView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
              infoBoxView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -44,7 +44,7 @@ class UserLoginViewController: UIViewController {
         label.textAlignment = .center
         label.textColor = .gray
         label.numberOfLines = 4
-        label.font = UIFont.systemFont(ofSize: 10)
+        label.font = UIFont(name: "OpenSans-Regular", size: 9)
         label.text = "Equal Housing Lender\nDeposit products provided by JPMorgan Chase Bank, N.A. Member FDIC\nCredit cards are issued by Chase Bank USA, N.A.\n© 2017 JPMorgan Chase & Co."
         label.disableAutoResizing()
         return label
