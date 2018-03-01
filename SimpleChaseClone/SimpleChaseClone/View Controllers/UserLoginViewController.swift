@@ -16,6 +16,7 @@ class UserLoginViewController: UIViewController {
         setUpViewController()
     }
     
+    //MARK: - Utilities
     private func setUpViewController() {
         view.backgroundColor = .clear
         addSubViews()
@@ -33,4 +34,5 @@ class UserLoginViewController: UIViewController {
              infoBoxView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ].map{$0.isActive = true}
     }
+    
 }

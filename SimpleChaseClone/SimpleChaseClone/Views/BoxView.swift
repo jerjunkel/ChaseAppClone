@@ -35,7 +35,7 @@ class BoxView: UIView {
     //MARK:- Utilities
     private func setUpView() {
         self.backgroundColor = .white
-        self.translatesAutoresizingMaskIntoConstraints = false
+        self.disableAutoResizing()
         setBorderStyle()
         addCorner()
     }

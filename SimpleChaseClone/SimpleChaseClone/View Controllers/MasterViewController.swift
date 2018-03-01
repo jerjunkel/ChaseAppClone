@@ -52,14 +52,14 @@ class MasterViewController: UIViewController {
         imageView.backgroundColor = .yellow
         imageView.image = UIImage(named: "background2")
         imageView.contentMode = .scaleAspectFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.disableAutoResizing()
         return imageView
     }()
     
     private var logoImageView: UIImageView = {
         let imageView: UIImageView = UIImageView()
         imageView.image = UIImage(named: "chase-logo-white-small")
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.disableAutoResizing()
         return imageView
     }()
 }
