@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserLoginViewController: UIViewController {
+class MasterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class UserLoginViewController: UIViewController {
     
     private func addSubViews() {
         view.addSubview(backgroundImage)
-        view.addSubview(infoBoxView)
+       // view.addSubview(infoBoxView)
         view.addSubview(logoImageView)
     }
     
@@ -39,11 +39,11 @@ class UserLoginViewController: UIViewController {
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ].map{$0.isActive = true}
         
-        _ = [infoBoxView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
-            infoBoxView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            infoBoxView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            infoBoxView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            ].map{$0.isActive = true}
+//        _ = [infoBoxView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
+//            infoBoxView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            infoBoxView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            infoBoxView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+//            ].map{$0.isActive = true}
     }
     
     //MARK: Views
@@ -63,5 +63,5 @@ class UserLoginViewController: UIViewController {
         return imageView
     }()
     
-    private var infoBoxView: BoxView = BoxView(hasCorners: false, borderStyle: .none)
+    //private var infoBoxView: BoxView = BoxView(hasCorners: false, borderStyle: .none)
 }
