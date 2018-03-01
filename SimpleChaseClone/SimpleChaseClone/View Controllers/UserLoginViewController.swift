@@ -25,6 +25,7 @@ class UserLoginViewController: UIViewController {
     
     private func addSubViews() {
         view.addSubview(infoBoxView)
+        infoBoxView.addSubview(infoLabel)
     }
     
     private func setContraints() {
@@ -33,6 +34,19 @@ class UserLoginViewController: UIViewController {
              infoBoxView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
              infoBoxView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ].map{$0.isActive = true}
+        _ = [infoLabel.bottomAnchor.constraint(equalTo: infoBoxView.bottomAnchor),
+            infoLabel.centerXAnchor.constraint(equalTo: infoBoxView.centerXAnchor)
+            ].map{$0.isActive = true}
     }
     
+    private var infoLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.textColor = .gray
+        label.numberOfLines = 4
+        label.font = UIFont.systemFont(ofSize: 10)
+        label.text = "Equal Housing Lender\nDeposit products provided by JPMorgan Chase Bank, N.A. Member FDIC\nCredit cards are issued by Chase Bank USA, N.A.\n© 2017 JPMorgan Chase & Co."
+        label.disableAutoResizing()
+        return label
+    }()
 }
