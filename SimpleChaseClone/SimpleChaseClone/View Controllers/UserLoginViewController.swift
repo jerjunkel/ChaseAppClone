@@ -10,6 +10,7 @@ import UIKit
 
 class UserLoginViewController: UIViewController {
     private var infoBoxView: BoxView = BoxView(hasCorners: false, borderStyle: .none)
+    private var loginBoxView: BoxView = BoxView(hasCorners: true, borderStyle: .thin)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,16 +27,24 @@ class UserLoginViewController: UIViewController {
     private func addSubViews() {
         view.addSubview(infoBoxView)
         infoBoxView.addSubview(infoLabel)
+        view.addSubview(loginBoxView)
     }
     
     private func setContraints() {
-        _ = [infoBoxView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25),
+        _ = [infoBoxView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.265),
              infoBoxView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
              infoBoxView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
              infoBoxView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ].map{$0.isActive = true}
+        
         _ = [infoLabel.bottomAnchor.constraint(equalTo: infoBoxView.bottomAnchor),
             infoLabel.centerXAnchor.constraint(equalTo: infoBoxView.centerXAnchor)
+            ].map{$0.isActive = true}
+        
+        _ = [loginBoxView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.32),
+             loginBoxView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
+             loginBoxView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+             loginBoxView.topAnchor.constraint(equalTo: view.centerYAnchor, constant: -20)
             ].map{$0.isActive = true}
     }
     

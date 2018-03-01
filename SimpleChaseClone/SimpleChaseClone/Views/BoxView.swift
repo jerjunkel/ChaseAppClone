@@ -44,8 +44,10 @@ class BoxView: UIView {
         switch borderStyle {
         case .heavy:
             self.layer.borderWidth = 2
+            self.layer.borderColor = UIColor.lightGray.cgColor
         case .thin:
-            self.layer.borderWidth = 0.5
+            self.layer.borderWidth = 0.7
+             self.layer.borderColor = UIColor.lightGray.cgColor
         case .none:
             break
         }
