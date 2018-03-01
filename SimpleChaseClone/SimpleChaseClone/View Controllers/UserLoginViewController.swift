@@ -12,6 +12,10 @@ class UserLoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpViewController()
     }
 
+    private func setUpViewController() {
+        view.backgroundColor = .white
+    }
 }
