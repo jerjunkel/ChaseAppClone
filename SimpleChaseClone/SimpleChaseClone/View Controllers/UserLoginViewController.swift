@@ -16,6 +16,6 @@ class UserLoginViewController: UIViewController {
     }
 
     private func setUpViewController() {
-        view.backgroundColor = .white
+        view.backgroundColor = Colors.blue.color
     }
 }
