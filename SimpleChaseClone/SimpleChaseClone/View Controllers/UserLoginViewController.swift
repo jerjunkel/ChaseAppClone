@@ -56,12 +56,12 @@ class UserLoginViewController: UIViewController {
     private func setLoginBoxSubViewContraints() {
         _ = [recoverUserIdPasswordButton.bottomAnchor.constraint(equalTo: loginBoxView.bottomAnchor),
              recoverUserIdPasswordButton.centerXAnchor.constraint(equalTo: loginBoxView.centerXAnchor),
-             recoverUserIdPasswordButton.widthAnchor.constraint(equalTo: loginBoxView.widthAnchor, multiplier: 0.8)
+             recoverUserIdPasswordButton.widthAnchor.constraint(equalTo: loginBoxView.widthAnchor, multiplier: 0.9)
             ].map{$0.isActive = true}
         
         _ = [loginButton.bottomAnchor.constraint(equalTo: recoverUserIdPasswordButton.topAnchor),
              loginButton.centerXAnchor.constraint(equalTo: loginBoxView.centerXAnchor),
-             loginButton.widthAnchor.constraint(equalTo: loginBoxView.widthAnchor, multiplier: 0.8)
+             loginButton.widthAnchor.constraint(equalTo: loginBoxView.widthAnchor, multiplier: 0.9)
             ].map{$0.isActive = true}
     }
     

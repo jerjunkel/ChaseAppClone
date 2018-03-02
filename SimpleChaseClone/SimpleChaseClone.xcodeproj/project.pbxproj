@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A2738772049B0A100D5EE5C /* ThemedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2738762049B0A100D5EE5C /* ThemedButton.swift */; };
 		1A2738792049CCA500D5EE5C /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2738782049CCA500D5EE5C /* OpenSans-SemiBold.ttf */; };
+		1A5E12852049CFA20070DB14 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A5E12842049CFA20070DB14 /* OpenSans-Bold.ttf */; };
 		1A953E56204856A200883939 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A953E55204856A200883939 /* MasterViewController.swift */; };
 		1A953E5820485A0E00883939 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A953E5720485A0E00883939 /* ColorManager.swift */; };
 		1A953E5A2048676C00883939 /* BoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A953E592048676C00883939 /* BoxView.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		1A2738762049B0A100D5EE5C /* ThemedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedButton.swift; sourceTree = "<group>"; };
 		1A2738782049CCA500D5EE5C /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		1A5E12842049CFA20070DB14 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		1A953E55204856A200883939 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		1A953E5720485A0E00883939 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		1A953E592048676C00883939 /* BoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxView.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 		1AEDDA7A20484A3300069E11 = {
 			isa = PBXGroup;
 			children = (
+				1A5E12842049CFA20070DB14 /* OpenSans-Bold.ttf */,
 				1A2738782049CCA500D5EE5C /* OpenSans-SemiBold.ttf */,
 				1AEA5D5A20488F5D00AECFDE /* OpenSans-Regular.ttf */,
 				1AEA5D5820488F5800AECFDE /* OpenSans-Light.ttf */,
@@ -171,6 +174,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A5E12852049CFA20070DB14 /* OpenSans-Bold.ttf in Resources */,
 				1AEA5D5B20488F5D00AECFDE /* OpenSans-Regular.ttf in Resources */,
 				1AEA5D5920488F5800AECFDE /* OpenSans-Light.ttf in Resources */,
 				1A2738792049CCA500D5EE5C /* OpenSans-SemiBold.ttf in Resources */,
