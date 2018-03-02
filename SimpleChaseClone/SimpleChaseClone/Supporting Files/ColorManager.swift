@@ -18,6 +18,30 @@ enum Colors: String {
     }
 }
 
+//enum Theme {
+//    case blue, white, gray, none
+//}
+
+protocol Theme {
+    var accentColor: UIColor {get}
+    var mainColor: UIColor {get}
+}
+
+protocol Themeable {
+    var theme: Theme? { get }
+    init(theme: Theme)
+}
+
+struct BlueTheme: Theme {
+    var accentColor: UIColor = .white
+    var mainColor: UIColor = Colors.blue.color
+}
+
+struct WhiteTheme: Theme {
+    var accentColor: UIColor = Colors.blue.color
+    var mainColor: UIColor = .white
+}
+
 extension UIColor {
     static func makeColorFromHex(value: String) -> UIColor {
         var cString:String = value.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
