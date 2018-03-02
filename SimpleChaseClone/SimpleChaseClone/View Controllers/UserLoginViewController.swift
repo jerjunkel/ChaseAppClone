@@ -26,8 +26,9 @@ class UserLoginViewController: UIViewController {
     
     private func addSubViews() {
         view.addSubview(infoBoxView)
-        infoBoxView.addSubview(infoLabel)
         view.addSubview(loginBoxView)
+        addInfoBoxSubViews()
+        addLoginBoxSubViews()
     }
     
     private func setContraints() {
@@ -37,17 +38,38 @@ class UserLoginViewController: UIViewController {
              infoBoxView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ].map{$0.isActive = true}
         
-        _ = [infoLabel.bottomAnchor.constraint(equalTo: infoBoxView.bottomAnchor),
-            infoLabel.centerXAnchor.constraint(equalTo: infoBoxView.centerXAnchor)
-            ].map{$0.isActive = true}
-        
         _ = [loginBoxView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.32),
              loginBoxView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
              loginBoxView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
              loginBoxView.topAnchor.constraint(equalTo: view.centerYAnchor, constant: -20)
             ].map{$0.isActive = true}
+        
+        setInfoBoxSubviewContraints()
+        setLoginBoxSubViewContraints()
     }
     
+    private func addLoginBoxSubViews() {
+        loginBoxView.addSubview(recoverUserIdPasswordButton)
+    }
+    
+    private func setLoginBoxSubViewContraints() {
+        _ = [recoverUserIdPasswordButton.bottomAnchor.constraint(equalTo: loginBoxView.bottomAnchor),
+             recoverUserIdPasswordButton.centerXAnchor.constraint(equalTo: loginBoxView.centerXAnchor),
+             recoverUserIdPasswordButton.widthAnchor.constraint(equalTo: loginBoxView.widthAnchor, multiplier: 0.8)
+            ].map{$0.isActive = true}
+    }
+    
+    private func addInfoBoxSubViews() {
+        infoBoxView.addSubview(infoLabel)
+    }
+    
+    private func setInfoBoxSubviewContraints() {
+        _ = [infoLabel.bottomAnchor.constraint(equalTo: infoBoxView.bottomAnchor),
+             infoLabel.centerXAnchor.constraint(equalTo: infoBoxView.centerXAnchor)
+            ].map{$0.isActive = true}
+    }
+    
+    //MARK:- Views
     private var infoLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -57,5 +79,14 @@ class UserLoginViewController: UIViewController {
         label.text = "Equal Housing Lender\nDeposit products provided by JPMorgan Chase Bank, N.A. Member FDIC\nCredit cards are issued by Chase Bank USA, N.A.\n© 2017 JPMorgan Chase & Co."
         label.disableAutoResizing()
         return label
+    }()
+    
+    private var recoverUserIdPasswordButton: UIButton = {
+        let button = UIButton()
+        button.disableAutoResizing()
+        button.backgroundColor = .white
+        button.setTitle("Forgot User ID or Password?", for: .normal)
+        button.setTitleColor(Colors.blue.color, for: .normal)
+        return button
     }()
 }
