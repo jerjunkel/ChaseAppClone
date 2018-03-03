@@ -17,7 +17,7 @@ class UserLoginViewController: UIViewController {
         setUpViewController()
     }
     
-    //MARK: - Utilities
+    //MARK:- Utilities
     private func setUpViewController() {
         view.backgroundColor = .clear
         addSubViews()
@@ -67,11 +67,16 @@ class UserLoginViewController: UIViewController {
     
     private func addInfoBoxSubViews() {
         infoBoxView.addSubview(infoLabel)
+        infoBoxView.addSubview(buttonStack)
     }
     
     private func setInfoBoxSubviewContraints() {
         _ = [infoLabel.bottomAnchor.constraint(equalTo: infoBoxView.bottomAnchor),
              infoLabel.centerXAnchor.constraint(equalTo: infoBoxView.centerXAnchor)
+            ].map{$0.isActive = true}
+        
+        _ = [buttonStack.bottomAnchor.constraint(equalTo: infoLabel.topAnchor),
+             buttonStack.centerXAnchor.constraint(equalTo: infoLabel.centerXAnchor)
             ].map{$0.isActive = true}
     }
     
@@ -98,4 +103,6 @@ class UserLoginViewController: UIViewController {
         button.setTitle("Log On", for: .normal)
         return button
     }()
+    
+    private let buttonStack = ThreeButtonStackView(theme: WhiteTheme(), buttonTitles: ["Enroll","ATM & Branch","Contact"])
 }
