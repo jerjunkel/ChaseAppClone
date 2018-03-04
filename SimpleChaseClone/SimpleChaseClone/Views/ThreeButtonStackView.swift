@@ -46,12 +46,12 @@ class ThreeButtonStackView: UIView {
             let button = ThemedButton(theme: theme)
             button.setTitle(title, for: .normal)
             buttons.append(button)
-            addButtonToView(button: button)
+            addToParentView(view: button)
         }
     }
     
-    private func addButtonToView(button: ThemedButton) {
-        addSubview(button)
+    private func addToParentView(view: UIView) {
+        addSubview(view)
     }
     
     private func setContraints() {
@@ -66,8 +66,22 @@ class ThreeButtonStackView: UIView {
             
             if button == buttons.last {
                 button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 10).isActive = true
+            }else{
+                let separator = makeSeparatorLabel()
+                addToParentView(view: separator)
+                separator.leadingAnchor.constraint(equalTo: button.trailingAnchor, constant: 10).isActive = true
+                separator.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+                separator.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+                previousTrailing = separator.trailingAnchor
             }
         }
+    }
+    
+    private func makeSeparatorLabel() -> UILabel {
+        let label = UILabel()
+        label.disableAutoResizing()
+        label.text = "|"
+        return label
     }
     
     //MARK: - Button Utilities
