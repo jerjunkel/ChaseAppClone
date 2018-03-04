@@ -41,7 +41,7 @@ class UserLoginViewController: UIViewController {
         _ = [loginBoxView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.32),
              loginBoxView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
              loginBoxView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-             loginBoxView.topAnchor.constraint(equalTo: view.centerYAnchor, constant: -20)
+             loginBoxView.topAnchor.constraint(equalTo: view.centerYAnchor, constant: -10)
             ].map{$0.isActive = true}
         
         setInfoBoxSubviewContraints()
@@ -67,7 +67,8 @@ class UserLoginViewController: UIViewController {
     
     private func addInfoBoxSubViews() {
         infoBoxView.addSubview(infoLabel)
-        infoBoxView.addSubview(buttonStack)
+        infoBoxView.addSubview(loginMoreActionButtonStack)
+        infoBoxView.addSubview(moreInfoButtonStack)
     }
     
     private func setInfoBoxSubviewContraints() {
@@ -75,8 +76,12 @@ class UserLoginViewController: UIViewController {
              infoLabel.centerXAnchor.constraint(equalTo: infoBoxView.centerXAnchor)
             ].map{$0.isActive = true}
         
-        _ = [buttonStack.bottomAnchor.constraint(equalTo: infoLabel.topAnchor),
-             buttonStack.centerXAnchor.constraint(equalTo: infoLabel.centerXAnchor)
+        _ = [loginMoreActionButtonStack.topAnchor.constraint(equalTo: loginBoxView.bottomAnchor, constant: 10),
+             loginMoreActionButtonStack.centerXAnchor.constraint(equalTo: infoLabel.centerXAnchor)
+            ].map{$0.isActive = true}
+        
+        _ = [moreInfoButtonStack.bottomAnchor.constraint(equalTo: infoLabel.topAnchor, constant: -10),
+             moreInfoButtonStack.centerXAnchor.constraint(equalTo: infoLabel.centerXAnchor)
             ].map{$0.isActive = true}
     }
     
@@ -104,5 +109,15 @@ class UserLoginViewController: UIViewController {
         return button
     }()
     
-    private let buttonStack = ThreeButtonStackView(theme: WhiteTheme(), buttonTitles: ["Enroll","ATM & Branch","Contact"])
+    private let loginMoreActionButtonStack: ThreeButtonStackView = {
+        let stack = ThreeButtonStackView(theme: WhiteTheme(), buttonTitles: ["Enroll","ATM & Branch","Contact"])
+        stack.setFont(to: UIFont.init(name: "OpenSans-Regular", size: 15))
+        return stack
+    }()
+    
+    private let moreInfoButtonStack: ThreeButtonStackView = {
+        let stack = ThreeButtonStackView(theme: WhiteTheme(), buttonTitles: ["FAQs","Privacy","Info"])
+        stack.setFont(to: UIFont.init(name: "OpenSans-Regular", size: 13))
+        return stack
+    }()
 }

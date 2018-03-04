@@ -59,14 +59,23 @@ class ThreeButtonStackView: UIView {
         var previousTrailing = self.leadingAnchor
         
         for button in buttons {
-            button.leadingAnchor.constraint(equalTo: previousTrailing).isActive = true
+            button.leadingAnchor.constraint(equalTo: previousTrailing, constant: 10).isActive = true
             button.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
             button.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
             previousTrailing = button.trailingAnchor
+            
+            if button == buttons.last {
+                button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 10).isActive = true
+            }
         }
     }
     
+    //MARK: - Button Utilities
     
+    func setFont(to font: UIFont?) {
+       _ = buttons.map { $0.titleLabel?.font = font}
+        
+    }
     //Views
     private var separatorLabel1: UILabel = {
         let label = UILabel()
