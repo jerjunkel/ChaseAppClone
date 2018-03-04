@@ -14,7 +14,6 @@ class ThreeButtonStackView: UIView {
     private var buttonTitles: [String]?
     var theme: Theme?
     
-    
 //    required init(theme: Theme) {
 //        self.init()
 //        self.theme = theme
@@ -46,11 +45,11 @@ class ThreeButtonStackView: UIView {
             let button = ThemedButton(theme: theme)
             button.setTitle(title, for: .normal)
             buttons.append(button)
-            addToParentView(view: button)
+            addToParent(view: button)
         }
     }
     
-    private func addToParentView(view: UIView) {
+    private func addToParent(view: UIView) {
         addSubview(view)
     }
     
@@ -68,7 +67,7 @@ class ThreeButtonStackView: UIView {
                 button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 10).isActive = true
             }else{
                 let separator = makeSeparatorLabel()
-                addToParentView(view: separator)
+                addToParent(view: separator)
                 separator.leadingAnchor.constraint(equalTo: button.trailingAnchor, constant: 10).isActive = true
                 separator.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
                 separator.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
@@ -84,7 +83,7 @@ class ThreeButtonStackView: UIView {
         return label
     }
     
-    //MARK: - Button Utilities
+    //MARK: - Stack Utilities
     
     func setFont(to font: UIFont?) {
        _ = buttons.map { $0.titleLabel?.font = font}
@@ -95,7 +94,7 @@ class ThreeButtonStackView: UIView {
         buttons[index].addTarget(self, action: action, for: .touchUpInside)
     }
     
-    //Views
+    //MARK:- Views
     private var separatorLabel1: UILabel = {
         let label = UILabel()
         label.disableAutoResizing()
@@ -110,5 +109,3 @@ class ThreeButtonStackView: UIView {
         return label
     }()
 }
-
-

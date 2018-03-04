@@ -9,37 +9,13 @@
 import Foundation
 import UIKit
 
-enum Colors: String {
+enum ChaseColor: String {
     case blue = "117ACA"
     case gray = "000000"
     
     var color: UIColor {
         return UIColor.makeColorFromHex(value: self.rawValue)
     }
-}
-
-//enum Theme {
-//    case blue, white, gray, none
-//}
-
-protocol Theme {
-    var accentColor: UIColor {get}
-    var mainColor: UIColor {get}
-}
-
-protocol Themeable {
-    var theme: Theme? { get }
-    init(theme: Theme)
-}
-
-struct BlueTheme: Theme {
-    var accentColor: UIColor = .white
-    var mainColor: UIColor = Colors.blue.color
-}
-
-struct WhiteTheme: Theme {
-    var accentColor: UIColor = Colors.blue.color
-    var mainColor: UIColor = .white
 }
 
 extension UIColor {

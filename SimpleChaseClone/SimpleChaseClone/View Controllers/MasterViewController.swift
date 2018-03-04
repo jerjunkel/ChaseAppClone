@@ -17,7 +17,7 @@ class MasterViewController: UIViewController {
 
     //MARK:- Utilities
     private func setUpViewController() {
-        view.backgroundColor = Colors.blue.color
+        view.backgroundColor = ChaseColor.blue.color
         addSubViews()
         setContraints()
         addLoginViewController()
