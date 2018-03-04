@@ -10,9 +10,8 @@ import UIKit
 
 class ThreeButtonStackView: UIView {
     private var buttons: [ThemedButton] = []
-    private var seperator: [UILabel] = []
     private var buttonTitles: [String]?
-    var theme: Theme?
+    private var theme: Theme?
     
 //    required init(theme: Theme) {
 //        self.init()
@@ -80,6 +79,7 @@ class ThreeButtonStackView: UIView {
         let label = UILabel()
         label.disableAutoResizing()
         label.text = "|"
+        label.font = UIFont.init(name: "OpenSans-Light", size: 12)
         return label
     }
     
@@ -100,19 +100,4 @@ class ThreeButtonStackView: UIView {
             addTarget(button: index, action: action)
         }
     }
-    
-    //MARK:- Views
-    private var separatorLabel1: UILabel = {
-        let label = UILabel()
-        label.disableAutoResizing()
-        label.text = "|"
-        return label
-    }()
-    
-    private var separatorLabel2: UILabel = {
-        let label = UILabel()
-        label.disableAutoResizing()
-        label.text = "|"
-        return label
-    }()
 }

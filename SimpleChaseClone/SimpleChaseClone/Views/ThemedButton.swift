@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThemedButton: UIButton, Themeable{
+class ThemedButton: UIButton, Themeable {
     var theme: Theme?
     
     required init(theme: Theme) {

@@ -10,6 +10,7 @@ import UIKit
 
 class MasterViewController: UIViewController {
     private let loginVC = UserLoginViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViewController()
