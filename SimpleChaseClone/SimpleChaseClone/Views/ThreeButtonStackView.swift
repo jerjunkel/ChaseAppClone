@@ -74,8 +74,13 @@ class ThreeButtonStackView: UIView {
     
     func setFont(to font: UIFont?) {
        _ = buttons.map { $0.titleLabel?.font = font}
-        
     }
+    
+    func addTarget(button index: Int, action: Selector) {
+        guard index >= 0 && index < buttons.count else { return }
+        buttons[index].addTarget(self, action: action, for: .touchUpInside)
+    }
+    
     //Views
     private var separatorLabel1: UILabel = {
         let label = UILabel()
