@@ -94,6 +94,13 @@ class ThreeButtonStackView: UIView {
         buttons[index].addTarget(nil, action: action, for: .touchUpInside)
     }
     
+    func addTargets(actions: [Selector]) {
+        guard actions.count == buttons.count else { return }
+        for (index, action) in actions.enumerated() {
+            addTarget(button: index, action: action)
+        }
+    }
+    
     //MARK:- Views
     private var separatorLabel1: UILabel = {
         let label = UILabel()

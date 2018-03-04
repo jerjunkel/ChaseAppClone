@@ -86,7 +86,7 @@ class UserLoginViewController: UIViewController {
     }
     
     @objc private func buttonPressed(button: UIButton) {
-        print("Button \(button.titleLabel?.text ?? "") pressed" )
+        print("\(button.titleLabel?.text ?? "") Button pressed" )
     }
     
     //MARK:- Views
