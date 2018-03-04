@@ -91,7 +91,7 @@ class ThreeButtonStackView: UIView {
     
     func addTarget(button index: Int, action: Selector) {
         guard index >= 0 && index < buttons.count else { return }
-        buttons[index].addTarget(self, action: action, for: .touchUpInside)
+        buttons[index].addTarget(nil, action: action, for: .touchUpInside)
     }
     
     //MARK:- Views

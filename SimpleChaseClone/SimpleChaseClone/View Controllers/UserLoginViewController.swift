@@ -85,6 +85,10 @@ class UserLoginViewController: UIViewController {
             ].map{$0.isActive = true}
     }
     
+    @objc private func buttonPressed(button: UIButton) {
+        print("Button \(button.titleLabel?.text ?? "") pressed" )
+    }
+    
     //MARK:- Views
     private var infoLabel: UILabel = {
         let label = UILabel()
@@ -112,6 +116,9 @@ class UserLoginViewController: UIViewController {
     private let loginMoreActionButtonStack: ThreeButtonStackView = {
         let stack = ThreeButtonStackView(theme: WhiteTheme(), buttonTitles: ["Enroll","ATM & Branch","Contact"])
         stack.setFont(to: UIFont.init(name: "OpenSans-Regular", size: 15))
+        stack.addTarget(button: 0, action: #selector(buttonPressed(button:)))
+        stack.addTarget(button: 1, action: #selector(buttonPressed(button:)))
+        stack.addTarget(button: 2, action: #selector(buttonPressed(button:)))
         return stack
     }()
     
