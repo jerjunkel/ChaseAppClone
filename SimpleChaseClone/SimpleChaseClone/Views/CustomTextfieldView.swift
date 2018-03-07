@@ -23,6 +23,7 @@ class CustomTextfieldView: UIView {
         addViews()
         setConstraints()
     }
+    
     private func addViews() {
         addSubview(textField)
     }
@@ -34,6 +35,7 @@ class CustomTextfieldView: UIView {
             heightAnchor.constraint(equalTo: textField.heightAnchor, constant: 10)
             ].map{$0.isActive = true}
     }
+    
     private func drawLine(){
         let line = path()
         UIColor.gray.setStroke()
@@ -53,12 +55,11 @@ class CustomTextfieldView: UIView {
         return path
     }
     
-    
     //MARK: - Views
     lazy var textField: UITextField = {
         let textField = UITextField()
         textField.disableAutoResizing()
-        textField.font = UIFont(name: ChaseFont.regular.stringValue, size: 13)
+        textField.font = UIFont(name: ChaseFont.semiBold.stringValue, size: 13)
         textField.autocorrectionType = .no
         return textField
     }()

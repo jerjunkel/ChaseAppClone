@@ -52,6 +52,7 @@ class UserLoginViewController: UIViewController {
         loginBoxView.addSubview(recoverUserIdPasswordButton)
         loginBoxView.addSubview(loginButton)
         loginBoxView.addSubview(userNameTextfield)
+        loginBoxView.addSubview(userPasswordTextfield)
     }
     
     private func setLoginBoxSubViewContraints() {
@@ -68,6 +69,11 @@ class UserLoginViewController: UIViewController {
         _ = [userNameTextfield.centerXAnchor.constraint(equalTo: loginBoxView.centerXAnchor),
              userNameTextfield.widthAnchor.constraint(equalTo: loginBoxView.widthAnchor, multiplier: 0.9),
              userNameTextfield.topAnchor.constraint(equalTo: loginBoxView.topAnchor, constant: 10)
+            ].map{$0.isActive = true}
+        
+        _ = [userPasswordTextfield.centerXAnchor.constraint(equalTo: loginBoxView.centerXAnchor),
+             userPasswordTextfield.widthAnchor.constraint(equalTo: loginBoxView.widthAnchor, multiplier: 0.9),
+             userPasswordTextfield.topAnchor.constraint(equalTo: userNameTextfield.bottomAnchor, constant: 20)
             ].map{$0.isActive = true}
     }
     
@@ -136,6 +142,11 @@ class UserLoginViewController: UIViewController {
     
     private let userNameTextfield: CustomTextfieldView = {
         let textfield = CustomTextfieldView(placeHolder: "Enter Your User Name")
+        return textfield
+    }()
+    
+    private let userPasswordTextfield: CustomTextfieldView = {
+        let textfield = CustomTextfieldView(placeHolder: "Enter Your User Pssword")
         return textfield
     }()
 }
