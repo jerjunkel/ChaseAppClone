@@ -56,7 +56,7 @@ class UserLoginViewController: UIViewController {
     }
     
     private func setLoginBoxSubViewContraints() {
-        _ = [recoverUserIdPasswordButton.bottomAnchor.constraint(equalTo: loginBoxView.bottomAnchor),
+        _ = [recoverUserIdPasswordButton.bottomAnchor.constraint(equalTo: loginBoxView.bottomAnchor, constant: -10),
              recoverUserIdPasswordButton.centerXAnchor.constraint(equalTo: loginBoxView.centerXAnchor),
              recoverUserIdPasswordButton.widthAnchor.constraint(equalTo: loginBoxView.widthAnchor, multiplier: 0.9)
             ].map{$0.isActive = true}
@@ -116,6 +116,7 @@ class UserLoginViewController: UIViewController {
     private var recoverUserIdPasswordButton: ThemedButton = {
         let button = ThemedButton(theme: WhiteTheme())
         button.setTitle("Forgot User ID or Password?", for: .normal)
+        button.titleLabel?.font = UIFont(name: OpenSans.semiBold.stringValue, size: 14)
         return button
     }()
     
@@ -141,13 +142,14 @@ class UserLoginViewController: UIViewController {
     }()
     
     private let userNameTextfield: CustomTextfieldView = {
-        let textfield = CustomTextfieldView(placeHolder: "Enter Your User Name")
+        let textfield = CustomTextfieldView(placeHolder: "Enter Your User Name", type: .textfieldOnly)
         return textfield
     }()
     
     private let userPasswordTextfield: CustomTextfieldView = {
-        let textfield = CustomTextfieldView(placeHolder: "Enter Your User Password")
-        textfield.image = UIImage(named: "finger_print_icon")
+        let textfield = CustomTextfieldView(placeHolder: "Enter Your User Password", type: .hasImage)
+        textfield.image = UIImage(named: "finger_print_iconblue")
         return textfield
     }()
+    
 }

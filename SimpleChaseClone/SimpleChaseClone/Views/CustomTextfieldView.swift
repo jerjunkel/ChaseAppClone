@@ -14,7 +14,7 @@ class CustomTextfieldView: UIView {
         case textfieldOnly
     }
     
-    private var state = CustomTextfieldViewState.hasImage
+    private var state = CustomTextfieldViewState.textfieldOnly
     private let underLineShape = CAShapeLayer()
     var image: UIImage? {
         didSet{
@@ -26,8 +26,9 @@ class CustomTextfieldView: UIView {
         drawLine()
     }
     
-    convenience init(placeHolder: String) {
+    convenience init(placeHolder: String, type: CustomTextfieldViewState) {
         self.init()
+        self.state = type
         textField.placeholder = placeHolder
         backgroundColor = .clear
         disableAutoResizing()
@@ -35,7 +36,7 @@ class CustomTextfieldView: UIView {
     }
     private func addImageView() {
         imageView.image = image
-        state = .hasImage
+        //state = .hasImage
     }
     
     private func addViews() {
@@ -76,7 +77,7 @@ class CustomTextfieldView: UIView {
     
     private func drawLine(){
         let line = path()
-        UIColor.gray.setStroke()
+        UIColor.lightGray.setStroke()
         line.lineWidth = 2
         line.stroke()
         underLineShape.bounds = line.bounds
@@ -114,6 +115,8 @@ class CustomTextfieldView: UIView {
         imageView.disableAutoResizing()
         //imageView.backgroundColor = .red
         imageView.contentMode = .scaleToFill
+        imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = ChaseColor.blue.color
         return imageView
     }()
 }
