@@ -51,6 +51,7 @@ class UserLoginViewController: UIViewController {
     private func addLoginBoxSubViews() {
         loginBoxView.addSubview(recoverUserIdPasswordButton)
         loginBoxView.addSubview(loginButton)
+        loginBoxView.addSubview(userNameTextfeild)
     }
     
     private func setLoginBoxSubViewContraints() {
@@ -62,6 +63,11 @@ class UserLoginViewController: UIViewController {
         _ = [loginButton.bottomAnchor.constraint(equalTo: recoverUserIdPasswordButton.topAnchor),
              loginButton.centerXAnchor.constraint(equalTo: loginBoxView.centerXAnchor),
              loginButton.widthAnchor.constraint(equalTo: loginBoxView.widthAnchor, multiplier: 0.9)
+            ].map{$0.isActive = true}
+        
+        _ = [userNameTextfeild.centerXAnchor.constraint(equalTo: loginBoxView.centerXAnchor),
+             userNameTextfeild.widthAnchor.constraint(equalTo: loginBoxView.widthAnchor, multiplier: 0.9),
+             userNameTextfeild.topAnchor.constraint(equalTo: loginBoxView.topAnchor, constant: 10)
             ].map{$0.isActive = true}
     }
     
@@ -126,5 +132,13 @@ class UserLoginViewController: UIViewController {
         let stack = ThreeButtonStackView(theme: WhiteTheme(), buttonTitles: ["FAQs","Privacy","Info"])
         stack.setFont(to: UIFont.init(name: "OpenSans-Regular", size: 13))
         return stack
+    }()
+    
+    private let userNameTextfeild: UITextField = {
+        let textfield = UITextField()
+        textfield.disableAutoResizing()
+        textfield.setBottomBorder()
+        textfield.placeholder = "Enter Your User Name"
+        return textfield
     }()
 }
