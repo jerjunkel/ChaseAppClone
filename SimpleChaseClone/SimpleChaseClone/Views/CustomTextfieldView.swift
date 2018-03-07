@@ -59,7 +59,7 @@ class CustomTextfieldView: UIView {
     lazy var textField: UITextField = {
         let textField = UITextField()
         textField.disableAutoResizing()
-        textField.font = UIFont(name: ChaseFont.semiBold.stringValue, size: 13)
+        textField.font = UIFont(name: OpenSans.semiBold.stringValue, size: 13)
         textField.autocorrectionType = .no
         return textField
     }()

@@ -33,7 +33,7 @@ struct WhiteTheme: Theme {
     var mainColor: UIColor = .white
 }
 
-enum ChaseFont: String {
+enum OpenSans: String {
     case light = "OpenSans-Light"
     case semiBold = "OpenSans-SemiBold"
     case regular = "OpenSans-Regular"
