@@ -9,8 +9,14 @@
 import UIKit
 
 class LabelCheckBox: UITextField {
-    enum CheckBoxState {
+    private enum CheckBoxState {
         case checked, notChecked
+    }
+    
+    private var buttonState: CheckBoxState = .notChecked {
+        didSet {
+            updateButtonUI()
+        }
     }
     
     convenience init(title: String) {
@@ -19,6 +25,7 @@ class LabelCheckBox: UITextField {
         disableAutoResizing()
         addViews()
         setContraints()
+        updateButtonUI()
     }
     
     //MARK: - Utilities
@@ -31,7 +38,7 @@ class LabelCheckBox: UITextField {
         
         _ = [label.leadingAnchor.constraint(equalTo: leadingAnchor),
              //label.trailingAnchor.constraint(equalTo: button.leadingAnchor),
-             //            label.topAnchor.constraint(equalTo: topAnchor),
+            //            label.topAnchor.constraint(equalTo: topAnchor),
             //            label.bottomAnchor.constraint(equalTo: bottomAnchor)
             label.centerYAnchor.constraint(equalTo: centerYAnchor)
             ].map{$0.isActive = true}
@@ -45,13 +52,35 @@ class LabelCheckBox: UITextField {
             ].map{$0.isActive = true}
     }
     
+    @objc private func changeButtonState() {
+        switch buttonState {
+        case .checked:
+            buttonState = .notChecked
+        case .notChecked:
+            buttonState = .checked
+        }
+    }
+    
+    private func updateButtonUI() {
+        switch buttonState {
+        case .checked:
+            button.setImage(UIImage(named: "tickblue"), for: .normal)
+            button.layer.borderWidth = 0
+        case .notChecked:
+            button.setImage(nil, for: .normal)
+            button.layer.borderWidth = 1
+        }
+    }
+    
     //MARK: - Views
     private let button: UIButton = {
         let button = UIButton()
         button.disableAutoResizing()
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 2
+        button.imageView?.contentMode = .scaleAspectFill
         button.layer.borderColor = UIColor.lightGray.cgColor
+        button.addTarget(nil, action: #selector(changeButtonState), for: .touchUpInside)
         return button
     }()
     
