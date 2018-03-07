@@ -9,7 +9,18 @@
 import UIKit
 
 class CustomTextfieldView: UIView {
+    enum CustomTextfieldViewState {
+        case hasImage
+        case textfieldOnly
+    }
+    
+    private var state = CustomTextfieldViewState.hasImage
     private let underLineShape = CAShapeLayer()
+    var image: UIImage? {
+        didSet{
+            addImageView()
+        }
+    }
     
     override func draw(_ rect: CGRect) {
         drawLine()
@@ -21,19 +32,46 @@ class CustomTextfieldView: UIView {
         backgroundColor = .clear
         disableAutoResizing()
         addViews()
-        setConstraints()
+    }
+    private func addImageView() {
+        imageView.image = image
+        state = .hasImage
     }
     
     private func addViews() {
         addSubview(textField)
+        
+        switch state {
+        case .hasImage:
+            addSubview(imageView)
+            setConstraintsWithImageView()
+        case .textfieldOnly:
+            setConstraintsWithoutImageView()
+        }
     }
     
-    private func setConstraints() {
+    private func setConstraintsWithoutImageView() {
+        heightAnchor.constraint(equalTo: textField.heightAnchor, constant: 10).isActive = true
+        
         _ = [textField.leadingAnchor.constraint(equalTo: leadingAnchor),
-            textField.trailingAnchor.constraint(equalTo: trailingAnchor),
-            textField.topAnchor.constraint(equalTo: topAnchor),
-            heightAnchor.constraint(equalTo: textField.heightAnchor, constant: 10)
+             textField.trailingAnchor.constraint(equalTo: trailingAnchor),
+             textField.topAnchor.constraint(equalTo: topAnchor),
+             ].map{$0.isActive = true}
+    }
+    
+    private func setConstraintsWithImageView() {
+        heightAnchor.constraint(equalTo: textField.heightAnchor, constant: 10).isActive = true
+        
+        _ = [textField.leadingAnchor.constraint(equalTo: leadingAnchor),
+             textField.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+             textField.topAnchor.constraint(equalTo: topAnchor)
             ].map{$0.isActive = true}
+        
+        _ = [imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+             imageView.topAnchor.constraint(equalTo: topAnchor),
+             imageView.heightAnchor.constraint(equalTo: textField.heightAnchor),
+             imageView.widthAnchor.constraint(equalTo: textField.heightAnchor)
+            ].map{ $0.isActive = true}
     }
     
     private func drawLine(){
@@ -51,12 +89,19 @@ class CustomTextfieldView: UIView {
     private func path() -> UIBezierPath{
         let path: UIBezierPath = UIBezierPath()
         path.move(to: CGPoint(x: textField.frame.minX, y: textField.frame.maxY + 10))
-        path.addLine(to: CGPoint(x: textField.frame.maxX, y: textField.frame.maxY + 10))
-        return path
+        
+        switch state {
+        case .hasImage:
+            path.addLine(to: CGPoint(x: imageView.frame.maxX, y: textField.frame.maxY + 10))
+        case .textfieldOnly:
+            path.addLine(to: CGPoint(x: textField.frame.maxX, y: textField.frame.maxY + 10))
+        }
+        
+        return path 
     }
     
     //MARK: - Views
-    lazy var textField: UITextField = {
+    private lazy var textField: UITextField = {
         let textField = UITextField()
         textField.disableAutoResizing()
         textField.font = UIFont(name: OpenSans.semiBold.stringValue, size: 13)
@@ -64,8 +109,11 @@ class CustomTextfieldView: UIView {
         return textField
     }()
     
-    lazy var imageView: UIImageView = {
+    private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.disableAutoResizing()
+        //imageView.backgroundColor = .red
+        imageView.contentMode = .scaleToFill
         return imageView
     }()
 }

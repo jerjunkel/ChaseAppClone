@@ -146,7 +146,8 @@ class UserLoginViewController: UIViewController {
     }()
     
     private let userPasswordTextfield: CustomTextfieldView = {
-        let textfield = CustomTextfieldView(placeHolder: "Enter Your User Pssword")
+        let textfield = CustomTextfieldView(placeHolder: "Enter Your User Password")
+        textfield.image = UIImage(named: "finger_print_icon")
         return textfield
     }()
 }
