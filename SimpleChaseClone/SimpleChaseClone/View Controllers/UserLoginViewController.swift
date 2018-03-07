@@ -101,7 +101,7 @@ class UserLoginViewController: UIViewController {
         label.textAlignment = .center
         label.textColor = .gray
         label.numberOfLines = 4
-        label.font = UIFont(name: "OpenSans-Regular", size: 9)
+        label.font = UIFont(name: ChaseFont.regular.stringValue, size: 9)
         label.text = "Equal Housing Lender\nDeposit products provided by JPMorgan Chase Bank, N.A. Member FDIC\nCredit cards are issued by Chase Bank USA, N.A.\n© 2017 JPMorgan Chase & Co."
         label.disableAutoResizing()
         return label
@@ -121,7 +121,7 @@ class UserLoginViewController: UIViewController {
     
     private let loginMoreActionButtonStack: ThreeButtonStackView = {
         let stack = ThreeButtonStackView(theme: WhiteTheme(), buttonTitles: ["Enroll","ATM & Branch","Contact"])
-        stack.setFont(to: UIFont.init(name: "OpenSans-Regular", size: 15))
+        stack.setFont(to: UIFont.init(name: ChaseFont.regular.stringValue, size: 15))
         stack.addTarget(button: 0, action: #selector(buttonPressed(button:)))
         stack.addTarget(button: 1, action: #selector(buttonPressed(button:)))
         stack.addTarget(button: 2, action: #selector(buttonPressed(button:)))
@@ -130,7 +130,7 @@ class UserLoginViewController: UIViewController {
     
     private let moreInfoButtonStack: ThreeButtonStackView = {
         let stack = ThreeButtonStackView(theme: WhiteTheme(), buttonTitles: ["FAQs","Privacy","Info"])
-        stack.setFont(to: UIFont.init(name: "OpenSans-Regular", size: 13))
+        stack.setFont(to: UIFont.init(name: ChaseFont.regular.stringValue, size: 13))
         return stack
     }()
     

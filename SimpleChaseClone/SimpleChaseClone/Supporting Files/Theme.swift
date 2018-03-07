@@ -32,3 +32,14 @@ struct WhiteTheme: Theme {
     var accentColor: UIColor = ChaseColor.blue.color
     var mainColor: UIColor = .white
 }
+
+enum ChaseFont: String {
+    case light = "OpenSans-Light"
+    case semiBold = "OpenSans-SemiBold"
+    case regular = "OpenSans-Regular"
+    case bold = "OpenSans-Bold"
+    
+    var stringValue: String {
+        return self.rawValue
+    }
+}
