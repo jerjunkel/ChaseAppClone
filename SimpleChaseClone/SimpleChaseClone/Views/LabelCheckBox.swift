@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LabelCheckBox: UITextField {
+class LabelCheckBox: UIView {
     private enum CheckBoxState {
         case checked, notChecked
     }
@@ -88,6 +88,7 @@ class LabelCheckBox: UITextField {
         let label = UILabel()
         label.disableAutoResizing()
         label.font = UIFont(name: OpenSans.light.stringValue, size: 12)
+        label.numberOfLines = 1
         return label
     }()
 }
