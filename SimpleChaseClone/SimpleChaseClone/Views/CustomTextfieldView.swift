@@ -78,7 +78,7 @@ class CustomTextfieldView: UIView {
     private func drawLine(){
         let line = path()
         UIColor.lightGray.setStroke()
-        line.lineWidth = 2
+        line.lineWidth = 1
         line.stroke()
         underLineShape.bounds = line.bounds
         underLineShape.path = line.cgPath

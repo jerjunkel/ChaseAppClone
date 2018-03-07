@@ -13,7 +13,6 @@ class LabelCheckBox: UITextField {
         case checked, notChecked
     }
     
-    
     convenience init(title: String) {
         self.init()
         label.text = title
@@ -41,8 +40,8 @@ class LabelCheckBox: UITextField {
              button.trailingAnchor.constraint(equalTo: trailingAnchor),
              button.topAnchor.constraint(equalTo: topAnchor),
              button.bottomAnchor.constraint(equalTo: bottomAnchor),
-             button.heightAnchor.constraint(equalToConstant: 20),
-             button.widthAnchor.constraint(equalToConstant: 20)
+             button.heightAnchor.constraint(equalToConstant: 15),
+             button.widthAnchor.constraint(equalToConstant: 15)
             ].map{$0.isActive = true}
     }
     
@@ -50,7 +49,9 @@ class LabelCheckBox: UITextField {
     private let button: UIButton = {
         let button = UIButton()
         button.disableAutoResizing()
-        button.layer.borderWidth = 3
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 2
+        button.layer.borderColor = UIColor.lightGray.cgColor
         return button
     }()
     
@@ -60,5 +61,4 @@ class LabelCheckBox: UITextField {
         label.font = UIFont(name: OpenSans.light.stringValue, size: 12)
         return label
     }()
-    
 }

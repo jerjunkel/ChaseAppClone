@@ -163,12 +163,12 @@ class UserLoginViewController: UIViewController {
     }()
     
     private let rememberMeLabel: LabelCheckBox = {
-        let label = LabelCheckBox(title: "Remember Me")
+        let label = LabelCheckBox(title: "Remember me")
         return label
     }()
     
     private let useTokenLabel: LabelCheckBox = {
-        let label = LabelCheckBox(title: "Use Token")
+        let label = LabelCheckBox(title: "Use token")
         return label
     }()
 }
