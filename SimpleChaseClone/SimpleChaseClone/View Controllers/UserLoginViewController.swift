@@ -53,6 +53,8 @@ class UserLoginViewController: UIViewController {
         loginBoxView.addSubview(loginButton)
         loginBoxView.addSubview(userNameTextfield)
         loginBoxView.addSubview(userPasswordTextfield)
+        loginBoxView.addSubview(rememberMeLabel)
+        loginBoxView.addSubview(useTokenLabel)
     }
     
     private func setLoginBoxSubViewContraints() {
@@ -74,6 +76,14 @@ class UserLoginViewController: UIViewController {
         _ = [userPasswordTextfield.centerXAnchor.constraint(equalTo: loginBoxView.centerXAnchor),
              userPasswordTextfield.widthAnchor.constraint(equalTo: loginBoxView.widthAnchor, multiplier: 0.9),
              userPasswordTextfield.topAnchor.constraint(equalTo: userNameTextfield.bottomAnchor, constant: 20)
+            ].map{$0.isActive = true}
+        
+        _ = [rememberMeLabel.leadingAnchor.constraint(equalTo: userPasswordTextfield.leadingAnchor),
+             rememberMeLabel.topAnchor.constraint(equalTo: userPasswordTextfield.bottomAnchor, constant: 20)
+            ].map {$0.isActive = true}
+        
+        _ = [useTokenLabel.trailingAnchor.constraint(equalTo: userPasswordTextfield.trailingAnchor),
+            useTokenLabel.topAnchor.constraint(equalTo: userPasswordTextfield.bottomAnchor, constant: 20)
             ].map{$0.isActive = true}
     }
     
@@ -152,4 +162,13 @@ class UserLoginViewController: UIViewController {
         return textfield
     }()
     
+    private let rememberMeLabel: LabelCheckBox = {
+        let label = LabelCheckBox(title: "Remember Me")
+        return label
+    }()
+    
+    private let useTokenLabel: LabelCheckBox = {
+        let label = LabelCheckBox(title: "Use Token")
+        return label
+    }()
 }
