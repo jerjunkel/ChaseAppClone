@@ -12,6 +12,7 @@
 		1A5E12852049CFA20070DB14 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A5E12842049CFA20070DB14 /* OpenSans-Bold.ttf */; };
 		1A5E1287204A2B470070DB14 /* ThreeButtonStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E1286204A2B470070DB14 /* ThreeButtonStackView.swift */; };
 		1A5E1289204BBA150070DB14 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E1288204BBA150070DB14 /* Theme.swift */; };
+		1A5E128D204F6BEA0070DB14 /* CustomTextfieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E128C204F6BEA0070DB14 /* CustomTextfieldView.swift */; };
 		1A953E56204856A200883939 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A953E55204856A200883939 /* MasterViewController.swift */; };
 		1A953E5820485A0E00883939 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A953E5720485A0E00883939 /* ColorManager.swift */; };
 		1A953E5A2048676C00883939 /* BoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A953E592048676C00883939 /* BoxView.swift */; };
@@ -31,6 +32,7 @@
 		1A5E12842049CFA20070DB14 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		1A5E1286204A2B470070DB14 /* ThreeButtonStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeButtonStackView.swift; sourceTree = "<group>"; };
 		1A5E1288204BBA150070DB14 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		1A5E128C204F6BEA0070DB14 /* CustomTextfieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfieldView.swift; sourceTree = "<group>"; };
 		1A953E55204856A200883939 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		1A953E5720485A0E00883939 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		1A953E592048676C00883939 /* BoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxView.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				1A953E592048676C00883939 /* BoxView.swift */,
 				1A2738762049B0A100D5EE5C /* ThemedButton.swift */,
 				1A5E1286204A2B470070DB14 /* ThreeButtonStackView.swift */,
+				1A5E128C204F6BEA0070DB14 /* CustomTextfieldView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A5E128D204F6BEA0070DB14 /* CustomTextfieldView.swift in Sources */,
 				1A5E1289204BBA150070DB14 /* Theme.swift in Sources */,
 				1A2738772049B0A100D5EE5C /* ThemedButton.swift in Sources */,
 				1A953E5820485A0E00883939 /* ColorManager.swift in Sources */,
