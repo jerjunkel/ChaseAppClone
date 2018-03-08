@@ -124,12 +124,21 @@ class UserLoginViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboard), name: .UIKeyboardDidHide, object: nil)
     }
     
-    @objc func handleKeyboard(notificiation: Notification) {
-        switch notificiation.name {
+    @objc func handleKeyboard(sender: Notification) {
+      animateLoginBoxView(notification: sender.name)
+    }
+    
+    private func animateLoginBoxView(notification: Notification.Name) {
+        switch notification {
         case .UIKeyboardDidShow:
-            print("Keyboard show")
+            UIView.animate(withDuration: 0.5, animations: { () -> Void in
+                self.loginBoxView.frame.origin.y = 250
+            })
         case .UIKeyboardDidHide:
             print("Keyboard hiden")
+            UIView.animate(withDuration: 0.5, animations: { () -> Void in
+                self.loginBoxView.frame.origin.y = 0
+            })
         default:
             break
         }
