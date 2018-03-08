@@ -13,12 +13,19 @@ class CustomTextfieldView: UIView {
         case hasImage
         case textfieldOnly
     }
-    
+  
     private var state = CustomTextfieldViewState.textfieldOnly
     private let underLineShape = CAShapeLayer()
+    
     var image: UIImage? {
         didSet{
             addImageView()
+        }
+    }
+    
+    var textfieldDelegate: UITextFieldDelegate? {
+        didSet{
+            textField.delegate = textfieldDelegate
         }
     }
     
