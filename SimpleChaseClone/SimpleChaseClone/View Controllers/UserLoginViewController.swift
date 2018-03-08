@@ -129,19 +129,30 @@ class UserLoginViewController: UIViewController {
     }
     
     private func animateLoginBoxView(notification: Notification.Name) {
+        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut)
         switch notification {
         case .UIKeyboardDidShow:
-            UIView.animate(withDuration: 0.5, animations: { () -> Void in
-                self.loginBoxView.frame.origin.y = 250
-            })
+            print("Keyboard showing")
+//            UIView.animate(withDuration: 0.3, animations: { () -> Void in
+//                self.loginBoxView.transform = CGAffineTransform(translationX: 0, y: -50)
+//            })
+            
+            animator.addAnimations {
+                self.loginBoxView.transform = CGAffineTransform(translationX: 0, y: -60)
+            }
         case .UIKeyboardDidHide:
-            print("Keyboard hiden")
-            UIView.animate(withDuration: 0.5, animations: { () -> Void in
-                self.loginBoxView.frame.origin.y = 0
-            })
+            print("Keyboard hidden")
+//            UIView.animate(withDuration: 0.3, animations: { () -> Void in
+//                self.loginBoxView.transform = CGAffineTransform.identity
+//            })
+            animator.addAnimations {
+                self.loginBoxView.transform = CGAffineTransform.identity
+            }
         default:
             break
         }
+        
+        animator.startAnimation()
     }
     //MARK:- Views
     private var infoLabel: UILabel = {
@@ -209,5 +220,10 @@ extension UserLoginViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         print(string)
         return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return false
     }
 }
