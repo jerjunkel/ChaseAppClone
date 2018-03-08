@@ -22,6 +22,7 @@ class UserLoginViewController: UIViewController {
         view.backgroundColor = .clear
         addSubViews()
         setContraints()
+        observeKeyboardNotifications()
     }
     
     private func addSubViews() {
@@ -83,7 +84,7 @@ class UserLoginViewController: UIViewController {
             ].map {$0.isActive = true}
         
         _ = [useTokenLabel.trailingAnchor.constraint(equalTo: userPasswordTextfield.trailingAnchor),
-            useTokenLabel.topAnchor.constraint(equalTo: userPasswordTextfield.bottomAnchor, constant: 20)
+             useTokenLabel.topAnchor.constraint(equalTo: userPasswordTextfield.bottomAnchor, constant: 20)
             ].map{$0.isActive = true}
     }
     
@@ -111,6 +112,22 @@ class UserLoginViewController: UIViewController {
         print("\(button.titleLabel?.text ?? "") Button pressed" )
     }
     
+    //MARK:- Keyboard Utilities
+    private func observeKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboard), name: .UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboard), name: .UIKeyboardDidHide, object: nil)
+    }
+    
+    @objc func handleKeyboard(notificiation: Notification) {
+        switch notificiation.name {
+        case .UIKeyboardDidShow:
+            print("Keyboard show")
+        case .UIKeyboardDidHide:
+            print("Keyboard hiden")
+        default:
+            break
+        }
+    }
     //MARK:- Views
     private var infoLabel: UILabel = {
         let label = UILabel()
@@ -171,4 +188,8 @@ class UserLoginViewController: UIViewController {
         let label = LabelCheckBox(title: "Use token")
         return label
     }()
+}
+
+extension UserLoginViewController: UITextFieldDelegate {
+    
 }
