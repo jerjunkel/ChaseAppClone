@@ -71,7 +71,7 @@ class CustomTextfieldView: UIView {
         heightAnchor.constraint(equalTo: textField.heightAnchor, constant: 10).isActive = true
         
         _ = [textField.leadingAnchor.constraint(equalTo: leadingAnchor),
-             textField.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+             textField.trailingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 10),
              textField.topAnchor.constraint(equalTo: topAnchor)
             ].map{$0.isActive = true}
         

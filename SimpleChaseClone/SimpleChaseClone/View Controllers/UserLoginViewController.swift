@@ -138,7 +138,7 @@ class UserLoginViewController: UIViewController {
 //            })
             
             animator.addAnimations {
-                self.loginBoxView.transform = CGAffineTransform(translationX: 0, y: -60)
+                self.loginBoxView.transform = CGAffineTransform(translationX: 0, y: -100)
             }
         case .UIKeyboardDidHide:
             print("Keyboard hidden")
