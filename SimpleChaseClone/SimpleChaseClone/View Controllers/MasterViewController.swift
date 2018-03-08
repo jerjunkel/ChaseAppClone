@@ -14,6 +14,7 @@ class MasterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViewController()
+        authenticateUser()
     }
 
     //MARK:- Utilities
@@ -45,6 +46,12 @@ class MasterViewController: UIViewController {
         addChildViewController(loginVC)
         view.addSubview(loginVC.view)
         loginVC.didMove(toParentViewController: self)
+    }
+    
+    private func authenticateUser() {
+        if Authenticator.manager.status == false {
+            Authenticator.manager.authenticateUser()
+        }
     }
     
     //MARK: Views
