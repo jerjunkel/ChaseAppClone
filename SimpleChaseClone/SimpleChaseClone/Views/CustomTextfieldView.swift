@@ -42,7 +42,7 @@ class CustomTextfieldView: UIView {
         addViews()
     }
     private func addImageView() {
-        imageView.image = image
+        imageButtonView.setImage(image, for: .normal)
         //state = .hasImage
     }
     
@@ -51,7 +51,7 @@ class CustomTextfieldView: UIView {
         
         switch state {
         case .hasImage:
-            addSubview(imageView)
+            addSubview(imageButtonView)
             setConstraintsWithImageView()
         case .textfieldOnly:
             setConstraintsWithoutImageView()
@@ -71,14 +71,14 @@ class CustomTextfieldView: UIView {
         heightAnchor.constraint(equalTo: textField.heightAnchor, constant: 10).isActive = true
         
         _ = [textField.leadingAnchor.constraint(equalTo: leadingAnchor),
-             textField.trailingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 10),
+             textField.trailingAnchor.constraint(equalTo: imageButtonView.leadingAnchor, constant: 10),
              textField.topAnchor.constraint(equalTo: topAnchor)
             ].map{$0.isActive = true}
         
-        _ = [imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-             imageView.topAnchor.constraint(equalTo: topAnchor),
-             imageView.heightAnchor.constraint(equalTo: textField.heightAnchor),
-             imageView.widthAnchor.constraint(equalTo: textField.heightAnchor)
+        _ = [imageButtonView.trailingAnchor.constraint(equalTo: trailingAnchor),
+             imageButtonView.topAnchor.constraint(equalTo: topAnchor),
+             imageButtonView.heightAnchor.constraint(equalTo: textField.heightAnchor),
+             imageButtonView.widthAnchor.constraint(equalTo: textField.heightAnchor)
             ].map{ $0.isActive = true}
     }
     
@@ -100,7 +100,7 @@ class CustomTextfieldView: UIView {
         
         switch state {
         case .hasImage:
-            path.addLine(to: CGPoint(x: imageView.frame.maxX, y: textField.frame.maxY + 10))
+            path.addLine(to: CGPoint(x: imageButtonView.frame.maxX, y: textField.frame.maxY + 10))
         case .textfieldOnly:
             path.addLine(to: CGPoint(x: textField.frame.maxX, y: textField.frame.maxY + 10))
         }
@@ -117,13 +117,13 @@ class CustomTextfieldView: UIView {
         return textField
     }()
     
-    private lazy var imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.disableAutoResizing()
+    private lazy var imageButtonView: UIButton = {
+        let button = UIButton()
+        button.disableAutoResizing()
         //imageView.backgroundColor = .red
-        imageView.contentMode = .scaleToFill
-        imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = ChaseColor.blue.color
-        return imageView
+        button.contentMode = .scaleToFill
+//        button.image = button.image?.withRenderingMode(.alwaysTemplate)
+//        button.tintColor = ChaseColor.blue.color
+        return button
     }()
 }
