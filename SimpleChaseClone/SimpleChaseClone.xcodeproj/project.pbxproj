@@ -14,6 +14,8 @@
 		1A5E1287204A2B470070DB14 /* ThreeButtonStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E1286204A2B470070DB14 /* ThreeButtonStackView.swift */; };
 		1A5E1289204BBA150070DB14 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E1288204BBA150070DB14 /* Theme.swift */; };
 		1A5E128D204F6BEA0070DB14 /* CustomTextfieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E128C204F6BEA0070DB14 /* CustomTextfieldView.swift */; };
+		1A92EF7E2051DDFA00565058 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A92EF7D2051DDFA00565058 /* LocalAuthentication.framework */; };
+		1A92EF812051DF5400565058 /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92EF802051DF5400565058 /* Authenticator.swift */; };
 		1A953E56204856A200883939 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A953E55204856A200883939 /* MasterViewController.swift */; };
 		1A953E5820485A0E00883939 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A953E5720485A0E00883939 /* ColorManager.swift */; };
 		1A953E5A2048676C00883939 /* BoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A953E592048676C00883939 /* BoxView.swift */; };
@@ -35,6 +37,8 @@
 		1A5E1286204A2B470070DB14 /* ThreeButtonStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeButtonStackView.swift; sourceTree = "<group>"; };
 		1A5E1288204BBA150070DB14 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		1A5E128C204F6BEA0070DB14 /* CustomTextfieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfieldView.swift; sourceTree = "<group>"; };
+		1A92EF7D2051DDFA00565058 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		1A92EF802051DF5400565058 /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		1A953E55204856A200883939 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		1A953E5720485A0E00883939 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		1A953E592048676C00883939 /* BoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxView.swift; sourceTree = "<group>"; };
@@ -55,12 +59,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A92EF7E2051DDFA00565058 /* LocalAuthentication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A92EF7C2051DDFA00565058 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1A92EF7D2051DDFA00565058 /* LocalAuthentication.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1A92EF7F2051DF2F00565058 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				1A92EF802051DF5400565058 /* Authenticator.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		1AEDDA7A20484A3300069E11 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +91,7 @@
 				1AEA5D5820488F5800AECFDE /* OpenSans-Light.ttf */,
 				1AEDDA8520484A3300069E11 /* SimpleChaseClone */,
 				1AEDDA8420484A3300069E11 /* Products */,
+				1A92EF7C2051DDFA00565058 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +106,7 @@
 		1AEDDA8520484A3300069E11 /* SimpleChaseClone */ = {
 			isa = PBXGroup;
 			children = (
+				1A92EF7F2051DF2F00565058 /* Authentication */,
 				1AEDDA9A204852A700069E11 /* Supporting Files */,
 				1AEDDA992048512500069E11 /* Views */,
 				1AEDDA982048511600069E11 /* View Controllers */,
@@ -208,6 +231,7 @@
 				1A2738772049B0A100D5EE5C /* ThemedButton.swift in Sources */,
 				1A953E5820485A0E00883939 /* ColorManager.swift in Sources */,
 				1A5E1287204A2B470070DB14 /* ThreeButtonStackView.swift in Sources */,
+				1A92EF812051DF5400565058 /* Authenticator.swift in Sources */,
 				1AEA5D552048847100AECFDE /* Extensions.swift in Sources */,
 				1AFCBBC620488059000040F9 /* UserLoginViewController.swift in Sources */,
 				1A48CDE220504CAB00B71D4D /* LabelCheckBox.swift in Sources */,

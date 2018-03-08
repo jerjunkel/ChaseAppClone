@@ -16,15 +16,7 @@ class BoxView: UIView {
     enum boxViewBorderStyle {
         case none, thin, heavy
     }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
+
     convenience init (hasCorners: Bool, borderStyle: boxViewBorderStyle){
         self.init()
         self.borderStyle = borderStyle
