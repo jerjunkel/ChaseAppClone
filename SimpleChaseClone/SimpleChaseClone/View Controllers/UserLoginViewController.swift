@@ -23,6 +23,7 @@ class UserLoginViewController: UIViewController {
         addSubViews()
         setContraints()
         observeKeyboardNotifications()
+        setTextFieldDelegate()
     }
     
     private func addSubViews() {
@@ -112,6 +113,11 @@ class UserLoginViewController: UIViewController {
         print("\(button.titleLabel?.text ?? "") Button pressed" )
     }
     
+    private func setTextFieldDelegate() {
+        userNameTextfield.textfieldDelegate = self
+        userPasswordTextfield.textfieldDelegate = self
+    }
+    
     //MARK:- Keyboard Utilities
     private func observeKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboard), name: .UIKeyboardDidShow, object: nil)
@@ -169,14 +175,14 @@ class UserLoginViewController: UIViewController {
     }()
     
     private let userNameTextfield: CustomTextfieldView = {
-        let textfield = CustomTextfieldView(placeHolder: "Enter Your User Name", type: .textfieldOnly)
-        return textfield
+        let textfieldView = CustomTextfieldView(placeHolder: "Enter Your User Name", type: .textfieldOnly)
+        return textfieldView
     }()
     
     private let userPasswordTextfield: CustomTextfieldView = {
-        let textfield = CustomTextfieldView(placeHolder: "Enter Your User Password", type: .hasImage)
-        textfield.image = UIImage(named: "finger_print_iconblue")
-        return textfield
+        let textfieldView = CustomTextfieldView(placeHolder: "Enter Your User Password", type: .hasImage)
+        textfieldView.image = UIImage(named: "finger_print_iconblue")
+        return textfieldView
     }()
     
     private let rememberMeLabel: LabelCheckBox = {
@@ -191,5 +197,8 @@ class UserLoginViewController: UIViewController {
 }
 
 extension UserLoginViewController: UITextFieldDelegate {
-    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        print(string)
+        return true
+    }
 }
