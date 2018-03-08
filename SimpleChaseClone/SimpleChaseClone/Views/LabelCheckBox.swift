@@ -80,6 +80,7 @@ class LabelCheckBox: UIView {
         button.layer.cornerRadius = 2
         button.imageView?.contentMode = .scaleAspectFill
         button.layer.borderColor = UIColor.lightGray.cgColor
+        button.layer.masksToBounds = true
         button.addTarget(nil, action: #selector(changeButtonState), for: .touchUpInside)
         return button
     }()

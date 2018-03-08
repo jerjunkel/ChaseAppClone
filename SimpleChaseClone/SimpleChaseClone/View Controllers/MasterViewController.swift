@@ -51,7 +51,7 @@ class MasterViewController: UIViewController {
     private var backgroundImage: UIImageView = {
         let imageView: UIImageView = UIImageView()
         imageView.backgroundColor = .yellow
-        imageView.image = UIImage(named: "background2")
+        imageView.image = UIImage(named: "background1")
         imageView.contentMode = .scaleAspectFill
         imageView.disableAutoResizing()
         return imageView
