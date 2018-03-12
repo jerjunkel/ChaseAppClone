@@ -41,9 +41,13 @@ class CustomTextfieldView: UIView {
         disableAutoResizing()
         addViews()
     }
+    
     private func addImageView() {
         imageButtonView.setImage(image, for: .normal)
-        //state = .hasImage
+    }
+    
+    func addTarget(selector: Selector) {
+        imageButtonView.addTarget(nil, action: selector, for: .touchUpInside)
     }
     
     private func addViews() {

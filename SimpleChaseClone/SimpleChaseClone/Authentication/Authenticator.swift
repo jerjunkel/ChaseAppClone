@@ -17,7 +17,7 @@ class Authenticator {
     var status: Bool = false
     var authError: NSError?
     
-    func authenticateUser() {
+    @objc func authenticateUser() {
         if localAuthContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError){
             localAuthContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Login to View Accounts", reply: { (success, error) in
                 
@@ -33,5 +33,19 @@ class Authenticator {
           print(authError?.localizedDescription)
         }
     }
-    
+}
+
+protocol UserAuthenticationObserver: class {
+    func userAuthenticationStatusChange(to status: UserAuthenticationStatus)
+}
+
+protocol UserAuthenticator: UserAuthenticationObserver {
+    var userLoginSuccess: Bool { get set }
+    var authenticatorContext: LAContext { get }
+    func authenticate()
+}
+
+enum UserAuthenticationStatus {
+    case error(error: Error)
+    case success
 }
