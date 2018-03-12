@@ -16,6 +16,10 @@ class MasterViewController: UIViewController {
         setUpViewController()
         //authenticateUser()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        Authenticator.manager.addObserver(observer: self)
+    }
 
     //MARK:- Utilities
     private func setUpViewController() {
@@ -68,4 +72,18 @@ class MasterViewController: UIViewController {
         imageView.disableAutoResizing()
         return imageView
     }()
+}
+
+
+extension MasterViewController: UserAuthenticationObserver {
+    func userAuthenticationStatusChanged(to status: UserAuthenticationState) {
+        switch status {
+        case .success:
+            print("Logged In")
+        case .loggedOut:
+            print("Logged Out")
+        case .error(error: let error):
+            print(error!.localizedDescription)
+        }
+    }
 }

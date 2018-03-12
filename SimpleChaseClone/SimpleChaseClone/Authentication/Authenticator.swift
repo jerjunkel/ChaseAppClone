@@ -10,7 +10,7 @@ import Foundation
 import LocalAuthentication
 
 protocol UserAuthenticationObserver: class {
-    func userAuthenticationStatusChange(to status: UserAuthenticationState)
+    func userAuthenticationStatusChanged(to status: UserAuthenticationState)
 }
 
 protocol UserAuthenticator {
@@ -41,7 +41,7 @@ class Authenticator: UserAuthenticator {
         guard case .loggedOut = userLoginStatus else { return }
         
         guard authenticatorContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) else {
-            observer?.userAuthenticationStatusChange(to: .error(error: authError))
+            observer?.userAuthenticationStatusChanged(to: .error(error: authError))
             return
         }
         
@@ -49,9 +49,9 @@ class Authenticator: UserAuthenticator {
             
             if success {
                 self.userLoginStatus = .success
-                self.observer?.userAuthenticationStatusChange(to: .success)
+                self.observer?.userAuthenticationStatusChanged(to: .success)
             } else {
-                self.observer?.userAuthenticationStatusChange(to: .error(error: error))
+                self.observer?.userAuthenticationStatusChanged(to: .error(error: error))
             }
         })
     }
