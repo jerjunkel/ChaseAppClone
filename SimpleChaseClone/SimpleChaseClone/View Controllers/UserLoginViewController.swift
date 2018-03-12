@@ -17,6 +17,10 @@ class UserLoginViewController: UIViewController {
         setUpViewController()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        authenticate()
+    }
+    
     //MARK:- Utilities
     private func setUpViewController() {
         view.backgroundColor = .clear

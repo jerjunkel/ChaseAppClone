@@ -20,7 +20,7 @@ protocol UserAuthenticator {
 }
 
 enum UserAuthenticationState {
-    case error(error: Error)
+    case error(error: Error?)
     case success, loggedOut
 }
 
@@ -38,22 +38,23 @@ class Authenticator: UserAuthenticator {
     private init(){}
     
     func authenticate() {
-        if case .loggedOut = userLoginStatus {
-            if authenticatorContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError){
-                authenticatorContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Login to View Accounts", reply: { (success, error) in
-                    
-                    if success {
-                        self.userLoginStatus = .success
-                        self.observer?.userAuthenticationStatusChange(to: .success)
-                    }else {
-                        //self.userLoginStatus = .loggedOut
-                        self.observer?.userAuthenticationStatusChange(to: .error(error: error!))
-                    }
-                })
-            }
+        guard case .loggedOut = userLoginStatus else { return }
+        
+        guard authenticatorContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) else {
+            observer?.userAuthenticationStatusChange(to: .error(error: authError))
+            return
         }
+        
+        authenticatorContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Login to View Accounts", reply: { (success, error) in
+            
+            if success {
+                self.userLoginStatus = .success
+                self.observer?.userAuthenticationStatusChange(to: .success)
+            } else {
+                self.observer?.userAuthenticationStatusChange(to: .error(error: error))
+            }
+        })
     }
-    
     
     func addObserver(observer: UserAuthenticationObserver) {
         self.observer = observer
@@ -64,9 +65,9 @@ class Authenticator: UserAuthenticator {
         case .loggedOut:
             print("Logged out")
         case .success:
-            print("logged in")
+            print("Logged in")
         case .error(error: let error):
-            print(error.localizedDescription)
+            print(error!.localizedDescription)
         }
     }
 }

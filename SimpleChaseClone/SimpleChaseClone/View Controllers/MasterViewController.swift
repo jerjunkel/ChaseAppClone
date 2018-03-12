@@ -14,7 +14,7 @@ class MasterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViewController()
-        authenticateUser()
+        //authenticateUser()
     }
 
     //MARK:- Utilities
