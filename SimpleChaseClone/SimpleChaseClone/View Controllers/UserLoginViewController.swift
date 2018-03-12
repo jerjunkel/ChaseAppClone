@@ -154,6 +154,9 @@ class UserLoginViewController: UIViewController {
         
         animator.startAnimation()
     }
+    @objc private func authenticate() {
+        Authenticator.manager.authenticate()
+    }
     //MARK:- Views
     private var infoLabel: UILabel = {
         let label = UILabel()
@@ -202,7 +205,7 @@ class UserLoginViewController: UIViewController {
     private let userPasswordTextfield: CustomTextfieldView = {
         let textfieldView = CustomTextfieldView(placeHolder: "Enter Your User Password", type: .hasImage)
         textfieldView.image = UIImage(named: "finger_print_iconblue")
-        textfieldView.addTarget(selector: #selector(Authenticator.manager.authenticateUser))
+       textfieldView.addTarget(selector: #selector(authenticate))
         return textfieldView
     }()
     

@@ -9,43 +9,64 @@
 import Foundation
 import LocalAuthentication
 
-class Authenticator {
+protocol UserAuthenticationObserver: class {
+    func userAuthenticationStatusChange(to status: UserAuthenticationState)
+}
+
+protocol UserAuthenticator {
+    var userLoginStatus: UserAuthenticationState { get set }
+    func authenticate()
+    func addObserver(observer: UserAuthenticationObserver)
+}
+
+enum UserAuthenticationState {
+    case error(error: Error)
+    case success, loggedOut
+}
+
+class Authenticator: UserAuthenticator {
     static let manager = Authenticator()
-    private init(){}
-    
-    private var localAuthContext = LAContext()
-    var status: Bool = false
-    var authError: NSError?
-    
-    @objc func authenticateUser() {
-        if localAuthContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError){
-            localAuthContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Login to View Accounts", reply: { (success, error) in
-                
-                if success {
-                    print("Success")
-                    self.status = success
-                    
-                }else {
-                    print(error!.localizedDescription)
-                }
-            })
-        } else {
-          print(authError?.localizedDescription)
+    var userLoginStatus: UserAuthenticationState = .loggedOut {
+        didSet {
+            handleAuthenticationStateChange()
         }
     }
-}
-
-protocol UserAuthenticationObserver: class {
-    func userAuthenticationStatusChange(to status: UserAuthenticationStatus)
-}
-
-protocol UserAuthenticator: UserAuthenticationObserver {
-    var userLoginSuccess: Bool { get set }
-    var authenticatorContext: LAContext { get }
-    func authenticate()
-}
-
-enum UserAuthenticationStatus {
-    case error(error: Error)
-    case success
+    private var authenticatorContext: LAContext = LAContext()
+    private var observer: UserAuthenticationObserver?
+    private var authError: NSError?
+    
+    private init(){}
+    
+    func authenticate() {
+        if case .loggedOut = userLoginStatus {
+            if authenticatorContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError){
+                authenticatorContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Login to View Accounts", reply: { (success, error) in
+                    
+                    if success {
+                        self.userLoginStatus = .success
+                        self.observer?.userAuthenticationStatusChange(to: .success)
+                    }else {
+                        //self.userLoginStatus = .loggedOut
+                        self.observer?.userAuthenticationStatusChange(to: .error(error: error!))
+                    }
+                })
+            }
+        }
+    }
+    
+    
+    func addObserver(observer: UserAuthenticationObserver) {
+        self.observer = observer
+    }
+    
+    private func handleAuthenticationStateChange() {
+        switch userLoginStatus {
+        case .loggedOut:
+            print("Logged out")
+        case .success:
+            print("logged in")
+        case .error(error: let error):
+            print(error.localizedDescription)
+        }
+    }
 }

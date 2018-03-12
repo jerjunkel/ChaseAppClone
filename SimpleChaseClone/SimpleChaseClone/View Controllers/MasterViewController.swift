@@ -49,9 +49,7 @@ class MasterViewController: UIViewController {
     }
     
     private func authenticateUser() {
-        if Authenticator.manager.status == false {
-            Authenticator.manager.authenticateUser()
-        }
+        Authenticator.manager.authenticate()
     }
     
     //MARK: Views
