@@ -134,21 +134,13 @@ class UserLoginViewController: UIViewController {
     
     private func animateLoginBoxView(notification: Notification.Name) {
         let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut)
+        
         switch notification {
         case .UIKeyboardDidShow:
-            print("Keyboard showing")
-//            UIView.animate(withDuration: 0.3, animations: { () -> Void in
-//                self.loginBoxView.transform = CGAffineTransform(translationX: 0, y: -50)
-//            })
-            
             animator.addAnimations {
                 self.loginBoxView.transform = CGAffineTransform(translationX: 0, y: -100)
             }
         case .UIKeyboardDidHide:
-            print("Keyboard hidden")
-//            UIView.animate(withDuration: 0.3, animations: { () -> Void in
-//                self.loginBoxView.transform = CGAffineTransform.identity
-//            })
             animator.addAnimations {
                 self.loginBoxView.transform = CGAffineTransform.identity
             }
@@ -158,9 +150,11 @@ class UserLoginViewController: UIViewController {
         
         animator.startAnimation()
     }
+    
     @objc private func authenticate() {
         Authenticator.manager.authenticate()
     }
+    
     //MARK:- Views
     private var infoLabel: UILabel = {
         let label = UILabel()
