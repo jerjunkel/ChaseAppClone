@@ -162,8 +162,8 @@ class UserLoginViewController: UIViewController {
         animator.startAnimation()
     }
     
-    private func animateViews() {
-        let animator = UIViewPropertyAnimator(duration: 1, curve: .easeOut)
+    func animateViews() {
+        let animator = UIViewPropertyAnimator(duration: 1.5, curve: .easeOut)
         
         animator.addAnimations {
             self.view.alpha = 1
