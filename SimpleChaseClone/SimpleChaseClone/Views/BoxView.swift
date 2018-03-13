@@ -10,14 +10,14 @@ import Foundation
 import UIKit
 
 class BoxView: UIView {
-    private var borderStyle: boxViewBorderStyle = .none
+    private var borderStyle: BoxViewBorderStyle = .none
     private var hasCorners: Bool = false
     
-    enum boxViewBorderStyle {
+    enum BoxViewBorderStyle {
         case none, thin, heavy
     }
 
-    convenience init (hasCorners: Bool, borderStyle: boxViewBorderStyle){
+    convenience init (hasCorners: Bool, borderStyle: BoxViewBorderStyle){
         self.init()
         self.borderStyle = borderStyle
         self.hasCorners = hasCorners
