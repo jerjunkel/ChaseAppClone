@@ -19,6 +19,7 @@ class MasterViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         Authenticator.manager.addObserver(observer: self)
+        animateViews()
     }
 
     //MARK:- Utilities
@@ -27,6 +28,7 @@ class MasterViewController: UIViewController {
         addSubViews()
         setContraints()
         addLoginViewController()
+        stageAnimation()
     }
     
     private func addSubViews() {
@@ -56,6 +58,27 @@ class MasterViewController: UIViewController {
         Authenticator.manager.authenticate()
     }
     
+    //MARK:- Animation Utilities
+    private func animateViews() {
+        let animator = UIViewPropertyAnimator(duration: 1, curve: .easeOut)
+        
+        animator.addAnimations {
+            self.backgroundImage.alpha = 1
+            self.logoImageView.alpha = 1
+            self.logoImageView.transform = CGAffineTransform.identity
+            self.backgroundImage.transform = CGAffineTransform.identity
+        }
+        
+        animator.startAnimation()
+    }
+    
+    private func stageAnimation() {
+        backgroundImage.alpha = 0
+        logoImageView.alpha = 0
+        logoImageView.transform = CGAffineTransform(translationX: 0, y: 300)
+        backgroundImage.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+    }
+    
     //MARK: Views
     private var backgroundImage: UIImageView = {
         let imageView: UIImageView = UIImageView()
@@ -74,7 +97,7 @@ class MasterViewController: UIViewController {
     }()
 }
 
-
+//MARK:- UserAuthenticationObserver Delegate method
 extension MasterViewController: UserAuthenticationObserver {
     func userAuthenticationStatusChanged(to status: UserAuthenticationState) {
         switch status {
