@@ -18,7 +18,12 @@ class UserLoginViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        authenticate()
+         authenticate()
+         observeKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        removeKeyboardNotifications()
     }
     
     //MARK:- Utilities
@@ -26,7 +31,6 @@ class UserLoginViewController: UIViewController {
         view.backgroundColor = .clear
         addSubViews()
         setContraints()
-        observeKeyboardNotifications()
         setTextFieldDelegate()
     }
     
@@ -126,6 +130,11 @@ class UserLoginViewController: UIViewController {
     private func observeKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboard), name: .UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboard), name: .UIKeyboardDidHide, object: nil)
+    }
+    
+    private func removeKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardDidHide, object: nil)
     }
     
     @objc func handleKeyboard(sender: Notification) {
