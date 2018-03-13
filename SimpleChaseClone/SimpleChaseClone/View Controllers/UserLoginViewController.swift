@@ -18,8 +18,8 @@ class UserLoginViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-         authenticate()
-         observeKeyboardNotifications()
+        authenticate()
+        observeKeyboardNotifications()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -138,9 +138,10 @@ class UserLoginViewController: UIViewController {
     }
     
     @objc func handleKeyboard(sender: Notification) {
-      animateLoginBoxView(notification: sender.name)
+        animateLoginBoxView(notification: sender.name)
     }
     
+    //MARK:- Animatition Utilities
     private func animateLoginBoxView(notification: Notification.Name) {
         let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut)
         
@@ -160,6 +161,7 @@ class UserLoginViewController: UIViewController {
         animator.startAnimation()
     }
     
+    //MARK: - User Authentication Utilities
     @objc private func authenticate() {
         Authenticator.manager.authenticate()
     }
@@ -212,7 +214,7 @@ class UserLoginViewController: UIViewController {
     private let userPasswordTextfield: CustomTextfieldView = {
         let textfieldView = CustomTextfieldView(placeHolder: "Enter Your User Password", type: .hasImage)
         textfieldView.image = UIImage(named: "finger_print_iconblue")
-       textfieldView.addTarget(selector: #selector(authenticate))
+        textfieldView.addTarget(selector: #selector(authenticate))
         return textfieldView
     }()
     
@@ -227,6 +229,7 @@ class UserLoginViewController: UIViewController {
     }()
 }
 
+//MARK:- Textfield Delegate Methods
 extension UserLoginViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         print(string)
