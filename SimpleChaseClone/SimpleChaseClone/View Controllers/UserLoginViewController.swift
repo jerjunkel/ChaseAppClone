@@ -166,7 +166,7 @@ class UserLoginViewController: UIViewController {
         let animator = UIViewPropertyAnimator(duration: 1, curve: .easeOut)
         
         animator.addAnimations {
-            self.view.alpha = 1
+            self.loginBoxView.alpha = 1
             self.loginBoxView.transform = CGAffineTransform.identity
         }
         
@@ -174,7 +174,7 @@ class UserLoginViewController: UIViewController {
     }
     
     private func stageAnimation() {
-        view.alpha = 0
+        loginBoxView.alpha = 0
         loginBoxView.transform = CGAffineTransform(translationX: 0, y: 300)
     }
     
