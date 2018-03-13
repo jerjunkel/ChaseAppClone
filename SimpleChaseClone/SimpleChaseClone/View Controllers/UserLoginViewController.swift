@@ -32,6 +32,7 @@ class UserLoginViewController: UIViewController {
         addSubViews()
         setContraints()
         setTextFieldDelegate()
+        stageAnimation()
     }
     
     private func addSubViews() {
@@ -159,6 +160,22 @@ class UserLoginViewController: UIViewController {
         }
         
         animator.startAnimation()
+    }
+    
+    private func animateViews() {
+        let animator = UIViewPropertyAnimator(duration: 1, curve: .easeOut)
+        
+        animator.addAnimations {
+            self.view.alpha = 1
+            self.loginBoxView.transform = CGAffineTransform.identity
+        }
+        
+        animator.startAnimation()
+    }
+    
+    private func stageAnimation() {
+        view.alpha = 0
+        loginBoxView.transform = CGAffineTransform(translationX: 0, y: 300)
     }
     
     //MARK: - User Authentication Utilities
