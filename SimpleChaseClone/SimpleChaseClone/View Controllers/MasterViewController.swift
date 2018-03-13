@@ -60,7 +60,7 @@ class MasterViewController: UIViewController {
     
     //MARK:- Animation Utilities
     private func animateViews() {
-        let animator = UIViewPropertyAnimator(duration: 1.5, curve: .easeOut)
+        let animator = UIViewPropertyAnimator(duration: 1, curve: .easeOut)
         loginVC.animateViews()
         animator.addAnimations {
             self.backgroundImage.alpha = 1
