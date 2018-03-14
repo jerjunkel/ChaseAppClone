@@ -10,6 +10,7 @@ import UIKit
 
 class MasterViewController: UIViewController {
     private let loginVC = UserLoginViewController()
+    //private let loadingVC = LoadingViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,7 @@ class MasterViewController: UIViewController {
         Authenticator.manager.addObserver(observer: self)
         animateViews()
     }
-
+    
     //MARK:- Utilities
     private func setUpViewController() {
         view.backgroundColor = ChaseColor.blue.color
@@ -38,13 +39,13 @@ class MasterViewController: UIViewController {
     
     private func setContraints() {
         _ = [backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundImage.heightAnchor.constraint(equalTo: view.heightAnchor)
+             backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+             backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+             backgroundImage.heightAnchor.constraint(equalTo: view.heightAnchor)
             ].map{$0.isActive = true}
         
         _ = [logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
-            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ].map{$0.isActive = true}
     }
     
@@ -79,6 +80,16 @@ class MasterViewController: UIViewController {
         backgroundImage.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
     }
     
+    //MARK:- LoadingVC Utilities
+    private func showLoadingScreen() {
+        DispatchQueue.main.async {
+            let loadingScreen = LoadingViewController()
+            loadingScreen.modalTransitionStyle = .crossDissolve
+            loadingScreen.modalPresentationStyle = .overCurrentContext
+            self.present(loadingScreen, animated: true, completion: nil)
+        }
+    }
+    
     //MARK: Views
     private var backgroundImage: UIImageView = {
         let imageView: UIImageView = UIImageView()
@@ -102,7 +113,8 @@ extension MasterViewController: UserAuthenticationObserver {
     func userAuthenticationStatusChanged(to status: UserAuthenticationState) {
         switch status {
         case .success:
-            print("Logged In")
+            //print("Logged In")
+            showLoadingScreen()
         case .loggedOut:
             print("Logged Out")
         case .error(error: let error):
