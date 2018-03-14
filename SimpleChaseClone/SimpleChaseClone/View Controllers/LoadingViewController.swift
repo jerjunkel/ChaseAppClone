@@ -12,6 +12,16 @@ class LoadingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setUpViewController()
+    }
+    //MARK:- Utilities
+    
+    private func setUpViewController() {
+        view.backgroundColor = .white
+        view.alpha = 0.5
+    }
+    
+    func dismiss() {
+        dismiss(animated: true, completion: nil)
     }
 }
