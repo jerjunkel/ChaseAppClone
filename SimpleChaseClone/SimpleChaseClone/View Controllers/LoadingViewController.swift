@@ -9,11 +9,11 @@
 import UIKit
 
 class LoadingViewController: UIViewController {
+    private let shapeLayer = CAShapeLayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViewController()
-        view.backgroundColor = .purple
     }
 
     //MARK:- Utilities
@@ -37,6 +37,19 @@ class LoadingViewController: UIViewController {
 
     func dismiss() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func drawCircle() {
+        let path = UIBezierPath(arcCenter: view.center, radius: CGFloat.pi / 2, startAngle: CGFloat.pi / 2, endAngle: CGFloat.pi, clockwise: true)
+        
+        shapeLayer.path = path.cgPath
+        shapeLayer.strokeColor = ChaseColor.blue.color.cgColor
+        shapeLayer.lineWidth = 10
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.lineCap = kCALineCapRound //Makes line stroke round
+        
+        view.layer.addSublayer(shapeLayer)
+        
     }
 
     private var containerView: UIView = {
