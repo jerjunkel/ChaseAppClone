@@ -27,7 +27,7 @@ class LoadingViewController: UIViewController {
 
     private func addViews() {
        view.addSubview(containerView)
-        containerView.addSubview(loadingView)
+        view.addSubview(loadingView)
     }
 
     private func setConstraints() {
@@ -47,11 +47,11 @@ class LoadingViewController: UIViewController {
     }
     
     private func drawCircle() {
-        let path = UIBezierPath(arcCenter: loadingView.center, radius: 25, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let path = UIBezierPath(arcCenter: loadingView.center, radius: 15, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
         
         shapeLayer.path = path.cgPath
         shapeLayer.strokeColor = ChaseColor.blue.color.cgColor
-        shapeLayer.lineWidth = 5
+        shapeLayer.lineWidth = 3
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineCap = kCALineCapRound //Makes line stroke round
         shapeLayer.strokeEnd = 0.5
@@ -120,8 +120,8 @@ class LoadingViewController: UIViewController {
         let view = UIView()
         view.backgroundColor = .clear
         view.disableAutoResizing()
-        view.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        view.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        view.widthAnchor.constraint(equalToConstant: 15).isActive = true
         return view
     }()
 }
