@@ -11,7 +11,7 @@ protocol CenterViewControllerDelegate: class {
     func toggleSlide()
 }
 protocol Expandable: class {
-    var delegate: CenterViewControllerDelegate { get set }
+    var delegate: CenterViewControllerDelegate? { get set }
 }
 
 class SlideContainterViewController: UIViewController {

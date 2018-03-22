@@ -17,11 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
-        let centerVC = UIViewController()
-        let leftVC = UIViewController()
-        centerVC.view.backgroundColor = .blue
-        leftVC.view.backgroundColor = .purple
-        window?.rootViewController = SlideContainterViewController(centerVC: centerVC, leftVC: leftVC)//MasterViewController()
+        window?.rootViewController = SlideContainterViewController(centerVC: AccountHomeViewController(), leftVC: AccountSlideMenuViewController())//MasterViewController()
         window?.makeKeyAndVisible()
         
         return true
