@@ -15,6 +15,7 @@
 		1A5E1287204A2B470070DB14 /* ThreeButtonStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E1286204A2B470070DB14 /* ThreeButtonStackView.swift */; };
 		1A5E1289204BBA150070DB14 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E1288204BBA150070DB14 /* Theme.swift */; };
 		1A5E128D204F6BEA0070DB14 /* CustomTextfieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E128C204F6BEA0070DB14 /* CustomTextfieldView.swift */; };
+		1A8F592A20634FAC00115383 /* SlideContainterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F592920634FAC00115383 /* SlideContainterViewController.swift */; };
 		1A92EF7E2051DDFA00565058 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A92EF7D2051DDFA00565058 /* LocalAuthentication.framework */; };
 		1A92EF812051DF5400565058 /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92EF802051DF5400565058 /* Authenticator.swift */; };
 		1A953E56204856A200883939 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A953E55204856A200883939 /* MasterViewController.swift */; };
@@ -39,6 +40,7 @@
 		1A5E1286204A2B470070DB14 /* ThreeButtonStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeButtonStackView.swift; sourceTree = "<group>"; };
 		1A5E1288204BBA150070DB14 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		1A5E128C204F6BEA0070DB14 /* CustomTextfieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfieldView.swift; sourceTree = "<group>"; };
+		1A8F592920634FAC00115383 /* SlideContainterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideContainterViewController.swift; sourceTree = "<group>"; };
 		1A92EF7D2051DDFA00565058 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		1A92EF802051DF5400565058 /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		1A953E55204856A200883939 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				1A953E55204856A200883939 /* MasterViewController.swift */,
 				1AFCBBC520488059000040F9 /* UserLoginViewController.swift */,
 				1A3661632059A89000F8F9D2 /* LoadingViewController.swift */,
+				1A8F592920634FAC00115383 /* SlideContainterViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				1A5E128D204F6BEA0070DB14 /* CustomTextfieldView.swift in Sources */,
 				1A5E1289204BBA150070DB14 /* Theme.swift in Sources */,
 				1A2738772049B0A100D5EE5C /* ThemedButton.swift in Sources */,
+				1A8F592A20634FAC00115383 /* SlideContainterViewController.swift in Sources */,
 				1A953E5820485A0E00883939 /* ColorManager.swift in Sources */,
 				1A5E1287204A2B470070DB14 /* ThreeButtonStackView.swift in Sources */,
 				1A92EF812051DF5400565058 /* Authenticator.swift in Sources */,
