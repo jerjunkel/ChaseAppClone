@@ -18,7 +18,7 @@ class SlideContainterViewController: UIViewController {
     enum ControllerSlideState {
         case expanded, collapsed
     }
-    private var state: ControllerSlideState = .collapsed
+    private var currentState: ControllerSlideState = .collapsed
     private var centerViewController: AccountHomeViewController?
     private var leftViewController: UIViewController?
     
@@ -29,7 +29,7 @@ class SlideContainterViewController: UIViewController {
     convenience init(centerVC: AccountHomeViewController, leftVC: UIViewController) {
         self.init()
         centerViewController = centerVC
-       // leftViewController = leftVC
+        leftViewController = leftVC
         
         setupViewController()
     }
@@ -49,14 +49,41 @@ class SlideContainterViewController: UIViewController {
         newCenterVC.didMove(toParentViewController: self)
     }
     
-    private func addNavigationController(to viewController: UIViewController) -> UIViewController {
+    private func addNavigationController(to viewController: UIViewController) -> UINavigationController {
         let navVC = UINavigationController(rootViewController: viewController)
         return navVC
+    }
+    
+    private func addSidePanelVC() {
+        guard let leftVc = leftViewController else { return }
+        view.insertSubview(leftVc.view, at: 0)
+        addChildViewController(leftVc)
+        leftVc.didMove(toParentViewController: self)
+    }
+    
+    //MARK:- Animation Utilities
+    private func animateViewController() {
+        let animator: UIViewPropertyAnimator = UIViewPropertyAnimator(duration: 0.5, curve: .easeOut)
+        
+        switch currentState {
+        case .collapsed:
+            animator.addAnimations {
+                self.centerViewController?.view.frame.origin.x = self.view.center.x
+            }
+            currentState = .expanded
+        case .expanded:
+            animator.addAnimations {
+                self.centerViewController?.view.frame.origin.x = 0
+            }
+            currentState = .collapsed
+        }
+        
+        animator.startAnimation()
     }
 }
 
 extension SlideContainterViewController: CenterViewControllerDelegate {
     func toggleSlide() {
-        print("Slide")
+        animateViewController()
     }
 }
