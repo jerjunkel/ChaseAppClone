@@ -7,6 +7,12 @@
 //
 
 import UIKit
+protocol CenterViewControllerDelegate: class {
+    func toggleSlide()
+}
+protocol Expandable: class {
+    var delegate: CenterViewControllerDelegate { get set }
+}
 
 class SlideContainterViewController: UIViewController {
     enum ControllerSlideState {
@@ -18,20 +24,22 @@ class SlideContainterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpViewController()
     }
     
-    convenience init(centerVC: UIViewController, leftVC: UIViewController) {
+    convenience init(centerVC: UIViewController, leftVC: Expandable) {
         self.init()
         centerViewController = centerVC
-        leftViewController = leftVC
-    }
-    
-    private func setUpViewController() {
-        view.backgroundColor = .red
+       // leftViewController = leftVC
+        
+        setupViewController()
     }
     
     //MARK:- Utilities
+    private func setupViewController() {
+        view.backgroundColor = .clear
+        addCenterVCToParent()
+    }
+    
     private func addCenterVCToParent() {
         guard let centerVC = centerViewController else { return }
         view.addSubview(centerVC.view)
