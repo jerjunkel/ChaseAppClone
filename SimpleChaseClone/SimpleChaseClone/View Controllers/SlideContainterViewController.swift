@@ -67,7 +67,7 @@ class SlideContainterViewController: UIViewController {
     
     //MARK:- Animation Utilities
     private func animateViewController() {
-        let animator: UIViewPropertyAnimator = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 1)
+        let animator: UIViewPropertyAnimator = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 0.7)
         
         switch currentState {
         case .collapsed:
@@ -109,7 +109,7 @@ extension SlideContainterViewController: CenterViewControllerDelegate {
 
 //MARK:- UIGestureRecognizerDelegate Methods
 extension SlideContainterViewController: UIGestureRecognizerDelegate {
-    @objc func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
+    @objc private func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
         guard let recognizerView = recognizer.view else { return }
         let gestureIsDraggingFromLeftToRight = (recognizer.velocity(in: view).x > 0)
         
