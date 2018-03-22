@@ -10,6 +10,7 @@ import UIKit
 
 class MasterViewController: UIViewController {
     private let loginVC = UserLoginViewController()
+    private var userHomeVC: SlideContainterViewController?
     //private let loadingVC = LoadingViewController()
     
     override func viewDidLoad() {
@@ -57,6 +58,11 @@ class MasterViewController: UIViewController {
     
     private func authenticateUser() {
         Authenticator.manager.authenticate()
+    }
+    
+    private func showUserAccountHome() {
+        userHomeVC = SlideContainterViewController(mainViewController: AccountHomeViewController(), sidePanelViewController: AccountSlideMenuViewController())
+        present(userHomeVC!, animated: true, completion: nil)
     }
     
     //MARK:- Animation Utilities
@@ -114,7 +120,8 @@ extension MasterViewController: UserAuthenticationObserver {
         switch status {
         case .success:
             //print("Logged In")
-            showLoadingScreen()
+            //showLoadingScreen()
+            showUserAccountHome()
         case .loggedOut:
             print("Logged Out")
         case .error(error: let error):
