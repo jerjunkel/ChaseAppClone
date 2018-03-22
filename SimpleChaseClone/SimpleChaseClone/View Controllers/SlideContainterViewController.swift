@@ -10,7 +10,7 @@ import UIKit
 protocol CenterViewControllerDelegate: class {
     func toggleSlide()
 }
-protocol Expandable: class {
+protocol Slidable: class {
     var delegate: CenterViewControllerDelegate? { get set }
 }
 
@@ -19,14 +19,14 @@ class SlideContainterViewController: UIViewController {
         case expanded, collapsed
     }
     private var state: ControllerSlideState = .collapsed
-    private var centerViewController: UIViewController?
+    private var centerViewController: AccountHomeViewController?
     private var leftViewController: UIViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    convenience init(centerVC: UIViewController, leftVC: Expandable) {
+    convenience init(centerVC: AccountHomeViewController, leftVC: UIViewController) {
         self.init()
         centerViewController = centerVC
        // leftViewController = leftVC
@@ -42,6 +42,7 @@ class SlideContainterViewController: UIViewController {
     
     private func addCenterVCToParent() {
         guard let centerVC = centerViewController else { return }
+        centerVC.delegate = self
         let newCenterVC = addNavigationController(to: centerVC)
         view.addSubview(newCenterVC.view)
         addChildViewController(newCenterVC)

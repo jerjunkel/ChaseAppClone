@@ -8,8 +8,7 @@
 
 import UIKit
 
-class AccountSlideMenuViewController: UIViewController, Expandable {
-    var delegate: CenterViewControllerDelegate?
+class AccountSlideMenuViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()

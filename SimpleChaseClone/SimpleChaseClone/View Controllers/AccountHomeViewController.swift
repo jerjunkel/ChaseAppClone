@@ -8,13 +8,26 @@
 
 import UIKit
 
-class AccountHomeViewController: UIViewController {
-
+class AccountHomeViewController: UIViewController, Slidable {
+    var delegate: CenterViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = .cyan
+        setupViewController()
     }
 
+    private func setupViewController() {
+        view.backgroundColor = .cyan
+        setupNavigationController()
+    }
+    
+    private func setupNavigationController() {
+      navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Slide", style: .done, target: self, action: #selector(handleSlideButton))
+    }
+    
+    @objc private func handleSlideButton () {
+        delegate?.toggleSlide()
+    }
 }
