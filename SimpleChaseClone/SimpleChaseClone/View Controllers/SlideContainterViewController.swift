@@ -21,7 +21,7 @@ class SlideContainterViewController: UIViewController {
     private var currentState: ControllerSlideState = .collapsed
     private var mainViewController: SlidableViewController?
     private var sidePanelViewController: UIViewController?
-    private var centerNavigation: UINavigationController?
+    private var centerNavigationController: UINavigationController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +46,10 @@ class SlideContainterViewController: UIViewController {
         guard let mainViewController = mainViewController else { return }
         mainViewController.delegate = self
         guard let centerViewController = mainViewController as? UIViewController else { return }
-        centerNavigation = UINavigationController(rootViewController: centerViewController)
-        view.addSubview(centerNavigation!.view)
-        addChildViewController(centerNavigation!)
-        centerNavigation!.didMove(toParentViewController: self)
+        centerNavigationController = UINavigationController(rootViewController: centerViewController)
+        view.addSubview(centerNavigationController!.view)
+        addChildViewController(centerNavigationController!)
+        centerNavigationController!.didMove(toParentViewController: self)
     }
 
     private func addSidePanelViewControllerToParent() {
@@ -66,12 +66,12 @@ class SlideContainterViewController: UIViewController {
         switch currentState {
         case .collapsed:
             animator.addAnimations {
-                self.centerNavigation?.view.frame.origin.x = self.view.center.x + 50
+                self.centerNavigationController?.view.frame.origin.x = self.view.center.x + 50
             }
             currentState = .expanded
         case .expanded:
             animator.addAnimations {
-                self.centerNavigation?.view.frame.origin.x = 0
+                self.centerNavigationController?.view.frame.origin.x = 0
             }
             currentState = .collapsed
         }
@@ -82,10 +82,10 @@ class SlideContainterViewController: UIViewController {
     private func addShadow() {
         switch currentState {
         case .collapsed:
-            centerNavigation?.view.layer.shadowOpacity = 0.0
+            centerNavigationController?.view.layer.shadowOpacity = 0.0
         case .expanded:
-            centerNavigation?.view.layer.shadowOpacity = 0.8
-            centerNavigation?.view.layer.shadowRadius = 3
+            centerNavigationController?.view.layer.shadowOpacity = 0.8
+            centerNavigationController?.view.layer.shadowRadius = 3
         }
     }
 }
