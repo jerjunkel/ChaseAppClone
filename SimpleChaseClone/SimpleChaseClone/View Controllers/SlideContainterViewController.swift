@@ -9,11 +9,20 @@
 import UIKit
 
 class SlideContainterViewController: UIViewController {
-
+    enum ControllerSlideState {
+        case expanded, collapsed
+    }
+    private var state: ControllerSlideState = .collapsed
+    private var centerViewController: UIViewController?
+    private var leftViewController: UIViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
-
+    
+    convenience init(centerVC: UIViewController, leftVC: UIViewController) {
+        self.init()
+        centerViewController = centerVC
+        leftViewController = leftVC
+    }
 }
