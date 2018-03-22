@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccountHomeViewController: UIViewController, Slidable {
+class AccountHomeViewController: UIViewController, SlidableViewController {
     var delegate: CenterViewControllerDelegate?
     
     override func viewDidLoad() {

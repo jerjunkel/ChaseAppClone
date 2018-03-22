@@ -10,7 +10,7 @@ import UIKit
 protocol CenterViewControllerDelegate: class {
     func toggleSlide()
 }
-protocol Slidable: class {
+protocol SlidableViewController: class {
     var delegate: CenterViewControllerDelegate? { get set }
 }
 
@@ -19,18 +19,18 @@ class SlideContainterViewController: UIViewController {
         case expanded, collapsed
     }
     private var currentState: ControllerSlideState = .collapsed
-    private var centerViewController: AccountHomeViewController?
-    private var leftViewController: UIViewController?
+    private var mainViewController: SlidableViewController?
+    private var sidePanelViewController: UIViewController?
     private var centerNavigation: UINavigationController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    convenience init(centerVC: AccountHomeViewController, leftVC: UIViewController) {
+    convenience init(mainViewController: SlidableViewController, sidePanelViewController: UIViewController) {
         self.init()
-        centerViewController = centerVC
-        leftViewController = leftVC
+        self.mainViewController = mainViewController
+        self.sidePanelViewController = sidePanelViewController
         
         setupViewController()
     }
@@ -38,24 +38,25 @@ class SlideContainterViewController: UIViewController {
     //MARK:- Utilities
     private func setupViewController() {
         view.backgroundColor = .clear
-        addCenterVCToParent()
-        addSidePanelVC()
+        addMainViewControllerToParent()
+        addSidePanelViewControllerToParent()
     }
     
-    private func addCenterVCToParent() {
-        guard let centerVC = centerViewController else { return }
-        centerVC.delegate = self
-        centerNavigation = UINavigationController(rootViewController: centerVC)
+    private func addMainViewControllerToParent() {
+        guard let mainViewController = mainViewController else { return }
+        mainViewController.delegate = self
+        guard let centerViewController = mainViewController as? UIViewController else { return }
+        centerNavigation = UINavigationController(rootViewController: centerViewController)
         view.addSubview(centerNavigation!.view)
         addChildViewController(centerNavigation!)
         centerNavigation!.didMove(toParentViewController: self)
     }
 
-    private func addSidePanelVC() {
-        guard let leftVc = leftViewController else { return }
-        view.insertSubview(leftVc.view, at: 0)
-        addChildViewController(leftVc)
-        leftVc.didMove(toParentViewController: self)
+    private func addSidePanelViewControllerToParent() {
+        guard let leftViewController = sidePanelViewController else { return }
+        view.insertSubview(leftViewController.view, at: 0)
+        addChildViewController(leftViewController)
+        leftViewController.didMove(toParentViewController: self)
     }
     
     //MARK:- Animation Utilities
