@@ -42,8 +42,20 @@ class SlideContainterViewController: UIViewController {
     
     private func addCenterVCToParent() {
         guard let centerVC = centerViewController else { return }
-        view.addSubview(centerVC.view)
-        addChildViewController(centerVC)
-        centerVC.didMove(toParentViewController: self)
+        let newCenterVC = addNavigationController(to: centerVC)
+        view.addSubview(newCenterVC.view)
+        addChildViewController(newCenterVC)
+        newCenterVC.didMove(toParentViewController: self)
+    }
+    
+    private func addNavigationController(to viewController: UIViewController) -> UIViewController {
+        let navVC = UINavigationController(rootViewController: viewController)
+        return navVC
+    }
+}
+
+extension SlideContainterViewController: CenterViewControllerDelegate {
+    func toggleSlide() {
+        print("Slide")
     }
 }
