@@ -19,15 +19,37 @@ class AccountHomeViewController: UIViewController, SlidableViewController {
     }
 
     private func setupViewController() {
-        view.backgroundColor = .cyan
+        view.backgroundColor = .white
         setupNavigationController()
+        addSubViews()
+        setContraints()
     }
     
     private func setupNavigationController() {
       navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Slide", style: .done, target: self, action: #selector(handleSlideButton))
     }
     
+    private func addSubViews() {
+        view.addSubview(backgroundImageView)
+    }
+    
+    private func setContraints() {
+        _ = [backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            ].map{$0.isActive = true}
+    }
+    
     @objc private func handleSlideButton () {
         delegate?.toggleSlide()
     }
+    
+    private let backgroundImageView: UIImageView = {
+        let imageview = UIImageView()
+        imageview.disableAutoResizing()
+        imageview.image = UIImage(named: "background3")
+        imageview.contentMode = .scaleAspectFill
+        return imageview
+    }()
 }

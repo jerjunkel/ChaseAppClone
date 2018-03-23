@@ -61,8 +61,10 @@ class MasterViewController: UIViewController {
     }
     
     private func showUserAccountHome() {
-        userHomeVC = SlideContainterViewController(mainViewController: AccountHomeViewController(), sidePanelViewController: AccountSlideMenuViewController())
-        present(userHomeVC!, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.userHomeVC = SlideContainterViewController(mainViewController: AccountHomeViewController(), sidePanelViewController: AccountSlideMenuViewController())
+            self.present(self.userHomeVC!, animated: true, completion: nil)
+        }
     }
     
     //MARK:- Animation Utilities
