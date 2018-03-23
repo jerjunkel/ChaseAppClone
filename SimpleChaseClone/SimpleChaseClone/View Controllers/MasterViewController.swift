@@ -63,6 +63,7 @@ class MasterViewController: UIViewController {
     private func showUserAccountHome() {
         DispatchQueue.main.async {
             self.userHomeVC = SlideContainterViewController(mainViewController: AccountHomeViewController(), sidePanelViewController: AccountSlideMenuViewController())
+            //self.navigationController?.pushViewController(self.userHomeVC!, animated: true)
             self.present(self.userHomeVC!, animated: true, completion: nil)
         }
     }
